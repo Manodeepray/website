@@ -1,7 +1,7 @@
 +++
 title = 'About'
 date = 2024-07-23T22:23:36+05:30
-draft = true
+draft = false
 +++
 
 ## ʕ•ᴥ•ʔ
