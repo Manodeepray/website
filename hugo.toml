@@ -1,4 +1,4 @@
-baseURL = 'https://manodeepray.is-a.dev/'
+baseURL = 'https://manodeepray.is-a.dev/website'
 languageCode = 'en-us'
 title = 'Manodeep Ray'
 theme = 'manodeep'
