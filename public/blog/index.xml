@@ -2,22 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Manodeep Ray</title>
-    <link>https://manodeepray.is-a.dev/website/blog/</link>
+    <link>http://localhost:1313/website/blog/</link>
     <description>Recent content in Blogs on Manodeep Ray</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 23 Jul 2024 22:49:38 +0530</lastBuildDate>
     
-        <atom:link href="https://manodeepray.is-a.dev/website/blog/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://localhost:1313/website/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My First Blog</title>
-      <link>https://manodeepray.is-a.dev/website/blog/my-first-blog/</link>
+      <link>http://localhost:1313/website/blog/my-first-blog/</link>
       <pubDate>Tue, 23 Jul 2024 22:49:38 +0530</pubDate>
       
-      <guid>https://manodeepray.is-a.dev/website/blog/my-first-blog/</guid>
+      <guid>http://localhost:1313/website/blog/my-first-blog/</guid>
       <description>&lt;h2 id=&#34;my-first-blog&#34;&gt;My first blog&lt;/h2&gt;
+&lt;h1 id=&#34;hi-im-manodeep---an-aspiring-ml-engineer&#34;&gt;Hi I&amp;rsquo;m Manodeep - An Aspiring ML Engineer&lt;/h1&gt;
+&lt;p&gt;Welcome to my first blog post! My name is Manodeep, and I&amp;rsquo;m thrilled to embark on this journey of sharing my experiences, insights, and adventures as an aspiring Machine Learning (ML) engineer.&lt;/p&gt;
+&lt;h2 id=&#34;who-am-i&#34;&gt;Who Am I?&lt;/h2&gt;
+&lt;p&gt;To kick things off, let me introduce myself. I&amp;rsquo;m a curious soul with a passion for all things tech and AI. Currently, I&amp;rsquo;m diving deep into the fascinating world of Machine Learning and AI, exploring how these technologies can shape the future.&lt;/p&gt;
+&lt;h2 id=&#34;my-journey-so-far&#34;&gt;My Journey So Far&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ve been on an exciting path of learning and discovery. Here are a few highlights:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Education:&lt;/strong&gt; I&amp;rsquo;m a pre-final year student in KIIT university in Bhubaneshwar , India pursuing btech in Electornics and Computer Science&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Experience:&lt;/strong&gt; 1. I&amp;rsquo;m currently doing a summer deep learning internship at IIT Bhilai, where I&amp;rsquo;m working on a cancer prediction web app. This project combines the power of image classification using YOLOv8n and symptom-based prediction using a Retrieval-Augmented Generation (RAG) model with Mistral 7B. 2. I am in the core ML team in USC.kiit society&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;why-this-blog&#34;&gt;Why This Blog?&lt;/h2&gt;
+&lt;p&gt;This blog is my way of sharing my learning journey, challenges, and breakthroughs. Whether it&amp;rsquo;s a cool project, a new technology, or just a nugget of wisdom I&amp;rsquo;ve picked up along the way, you&amp;rsquo;ll find it here.&lt;/p&gt;
+&lt;h2 id=&#34;lets-connect&#34;&gt;Let&amp;rsquo;s Connect!&lt;/h2&gt;
+&lt;p&gt;I believe that learning is a collaborative process. I&amp;rsquo;d love to hear from you! Whether you have questions, suggestions, or just want to say hi, feel free to reach out. Let&amp;rsquo;s connect and grow together in this exciting field of Machine Learning.&lt;/p&gt;
+&lt;p&gt;Thank you for joining me on this journey. Stay tuned for more updates, and let&amp;rsquo;s make the future smarter and brighter with AI!&lt;/p&gt;
+&lt;p&gt;Best regards,&lt;br&gt;
+Manodeep&lt;/p&gt;
 </description>
       
       

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Manodeep Ray</title>
+    <link>http://localhost:1313/website/projects/</link>
+    <description>Recent content in Projects on Manodeep Ray</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Jul 2024 12:32:52 +0530</lastBuildDate>
+    
+        <atom:link href="http://localhost:1313/website/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oral_guard</title>
+      <link>http://localhost:1313/website/projects/oral_guard/</link>
+      <pubDate>Wed, 24 Jul 2024 12:32:52 +0530</pubDate>
+      
+      <guid>http://localhost:1313/website/projects/oral_guard/</guid>
+      <description>&lt;h2 id=&#34;its-my-summer-internship-project-at-iit-bhilai&#34;&gt;Its my Summer Internship Project at IIT Bhilai&lt;/h2&gt;
+&lt;p&gt;During my internship, I worked on an innovative deep learning project focusing on cancer prediction. I developed a web app with Gradio that assists in diagnosing and evaluating oral diseases. Here’s a detailed breakdown of the project:&lt;/p&gt;
+&lt;h3 id=&#34;part-1-image-classification&#34;&gt;Part 1: Image Classification&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Model:&lt;/strong&gt; YOLOv8n&lt;br&gt;
+&lt;strong&gt;Task:&lt;/strong&gt; Predicts the type of oral disease (cancer, dental caries, scurvy, periodontal, healthy) using image classification on custom data.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Advanced Detection:&lt;/strong&gt; If cancer is detected, the model then uses object detection to pinpoint the growth location and determines the grade and stage:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Grades:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Grade 1:&lt;/strong&gt; Similar to normal cells&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grade 2:&lt;/strong&gt; Slightly abnormal&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grade 3:&lt;/strong&gt; Very abnormal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Stages:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Stage 1:&lt;/strong&gt; Less than 2 cm&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stage 2:&lt;/strong&gt; 2 cm to 4 cm&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stage 3:&lt;/strong&gt; Greater than 4 cm to widespread growth&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Data Collection:&lt;/strong&gt; All images were gathered and processed by me using Google extensions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Workflow:&lt;/strong&gt; The images are fed into the trained YOLOv8n model, which first classifies the disease type. If the disease is classified as cancer, the model performs object detection to identify the specific location of the cancerous growth. The detected area is then analyzed to determine the grade and stage of the cancer based on predefined criteria.&lt;/p&gt;
+&lt;h3 id=&#34;part-2-symptom-based-prediction&#34;&gt;Part 2: Symptom-Based Prediction&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Input:&lt;/strong&gt; Symptoms entered by the patient&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Model:&lt;/strong&gt; Retrieval-Augmented Generation (RAG) model on custom PDFs&lt;br&gt;
+&lt;strong&gt;Functionality:&lt;/strong&gt; Predicts the grade and stage of oral cancer based on patient symptoms, followed by treatment recommendations.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Grade and Stage Prediction:&lt;/strong&gt; The RAG model takes the patient’s symptoms and matches them with information from custom PDFs to determine the grade and stage of cancer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Treatment Recommendations:&lt;/strong&gt; Two additional RAG models provide treatment options based on the determined grade and stage, sourcing information from specific PDFs that detail treatments for each grade and stage.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LLM used:&lt;/strong&gt; Mistral 7B&lt;/p&gt;
+&lt;h3 id=&#34;challenges-and-limitations&#34;&gt;Challenges and Limitations&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;LLM Constraints:&lt;/strong&gt; Due to size limitations (maximum 10GB on Hugging Face), a lighter LLM was utilized, necessitating the creation of three distinct RAG models (two for treatment recommendations and one for grade and stage evaluation).&lt;br&gt;
+&lt;strong&gt;Multiple API Calls:&lt;/strong&gt; Multiple calls to the LLM were required for coherent responses, which could be optimized with a more robust model such as GPT-3 or Gemini. A single, more powerful LLM would enhance processing efficiency and accuracy.&lt;br&gt;
+&lt;strong&gt;Performance:&lt;/strong&gt; The current RAG model setup results in longer processing times, impacting the speed of output generation.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/posts/manodeep-ray-346b3b294_deeplearning-cancerprediction-ai-activity-7219962641518067712--nht?utm_source=share&amp;amp;utm_medium=member_desktop&#34;&gt;Linked in post&lt;/a&gt;
+&lt;a href=&#34;https://github.com/Manodeepray/oral_health_ai&#34;&gt;Github repo &lt;/a&gt;&lt;/p&gt;
+</description>
+      
+      
+    </item>
+    
+    <item>
+      <title>Offline_ai</title>
+      <link>http://localhost:1313/website/projects/offline_ai/</link>
+      <pubDate>Wed, 24 Jul 2024 12:26:09 +0530</pubDate>
+      
+      <guid>http://localhost:1313/website/projects/offline_ai/</guid>
+      <description>&lt;h1 id=&#34;building-an-offline-sms-llm-app-for-buildspace-my-journey-and-challenges&#34;&gt;Building an Offline SMS LLM App for Buildspace: My Journey and Challenges&lt;/h1&gt;
+&lt;p&gt;Hello everyone! It&amp;rsquo;s Manodeep here again, back with another update on my exciting adventures in the world of Machine Learning and AI. Today, I want to share my ongoing project for Buildspace and some of the challenges I&amp;rsquo;m facing along the way.&lt;/p&gt;
+&lt;h2 id=&#34;the-project-offline-sms-llm-app&#34;&gt;The Project: Offline SMS LLM App&lt;/h2&gt;
+&lt;p&gt;Currently, I&amp;rsquo;m working on an offline SMS LLM (Large Language Model) app for Buildspace. The idea is to create an application that leverages the power of language models to provide intelligent responses via SMS, all while working offline. This project is both challenging and exhilarating, pushing the boundaries of what can be achieved with limited connectivity.&lt;/p&gt;
+&lt;h2 id=&#34;why-an-offline-sms-llm-app&#34;&gt;Why an Offline SMS LLM App?&lt;/h2&gt;
+&lt;p&gt;In many parts of the world, internet access is still a luxury. By developing an offline SMS LLM app, I aim to bring the benefits of AI to areas with limited or no internet connectivity. This app can help with various tasks, from educational assistance to quick information retrieval, all through simple SMS.&lt;/p&gt;
+&lt;h2 id=&#34;the-journey-so-far&#34;&gt;The Journey So Far&lt;/h2&gt;
+&lt;h3 id=&#34;initial-research-and-planning&#34;&gt;Initial Research and Planning&lt;/h3&gt;
+&lt;p&gt;The journey began with extensive research. I needed to understand the limitations and possibilities of running a language model offline and how to integrate it with SMS functionality. This involved:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Selecting the Right Model:&lt;/strong&gt; Choosing a language model that can operate efficiently offline. Smaller, more efficient models like Mistral 7B came into consideration.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Understanding SMS Protocols:&lt;/strong&gt; Diving into the intricacies of SMS protocols and how to interact with them programmatically.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;development-phase&#34;&gt;Development Phase&lt;/h3&gt;
+&lt;p&gt;With a solid plan in place, I started the development phase. Here&amp;rsquo;s a snapshot of the process:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Model Optimization:&lt;/strong&gt; Ensuring the language model can run smoothly on devices with limited resources.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SMS Integration:&lt;/strong&gt; Developing the SMS interface to send and receive messages seamlessly.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User Interface:&lt;/strong&gt; Creating a simple and intuitive interface for users to interact with the app.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-progress&#34;&gt;The Progress&lt;/h2&gt;
+&lt;h1 id=&#34;progess-till-24724&#34;&gt;Progess till 24.7.24&lt;/h1&gt;
+&lt;p&gt;Now currently facing an issue of integrating the SMS interface . i have done everything but the number used by me is international number ..and my phone doesnt have international roaming :..so i cant test my app &amp;hellip; so yeaaaa.&lt;/p&gt;
+</description>
+      
+      
+    </item>
+    
+  </channel>
+</rss>
