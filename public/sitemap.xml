@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/website/</loc>
-    <lastmod>2024-07-24T12:32:52+05:30</lastmod>
+    <loc>http://localhost:1313/website/projects/chat-bot-for-college/</loc>
+    <lastmod>2024-09-04T22:41:27+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/website/projects/oral_guard/</loc>
-    <lastmod>2024-07-24T12:32:52+05:30</lastmod>
+    <loc>http://localhost:1313/website/</loc>
+    <lastmod>2024-09-04T22:41:27+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/website/projects/</loc>
+    <lastmod>2024-09-04T22:41:27+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/website/projects/oral_guard/</loc>
     <lastmod>2024-07-24T12:32:52+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/website/projects/offline_ai/</loc>
