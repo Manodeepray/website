@@ -6,10 +6,49 @@
     <description>Recent content in Blogs on Manodeep Ray</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Jul 2024 22:49:38 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 05 Sep 2024 20:33:07 +0530</lastBuildDate>
     
         <atom:link href="http://localhost:1313/website/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Isic2024 Faster Vit</title>
+      <link>http://localhost:1313/website/blog/isic2024-faster-vit/</link>
+      <pubDate>Thu, 05 Sep 2024 20:33:07 +0530</pubDate>
+      
+      <guid>http://localhost:1313/website/blog/isic2024-faster-vit/</guid>
+      <description>&lt;h1 id=&#34;exploring-vision-transformers-for-skin-cancer-classification-a-deep-learning-journey&#34;&gt;Exploring Vision Transformers for Skin Cancer Classification: A Deep Learning Journey&lt;/h1&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Skin cancer remains one of the most common cancers globally, making early diagnosis and accurate classification essential. In recent years, deep learning has played a pivotal role in automating the detection and classification of skin lesions. Vision Transformers (ViTs) are emerging as a powerful tool for image classification tasks, including medical image analysis.&lt;/p&gt;
+&lt;p&gt;In this blog, I will share insights from my project, where I applied ViTs to classify skin lesions from the ISIC 2024 dataset into benign and malignant categories. I also explored a novel ViT model incorporating a token learning layer to optimize training time. Let&amp;rsquo;s dive into the details!&lt;/p&gt;
+&lt;h2 id=&#34;dataset-overview-isic-2024&#34;&gt;Dataset Overview: ISIC 2024&lt;/h2&gt;
+&lt;p&gt;The ISIC 2024 dataset is a comprehensive collection of skin lesion images, serving as a benchmark for melanoma detection. The dataset includes various types of skin lesions, making it ideal for training and evaluating deep learning models for binary classification tasks. The key challenge here is to develop AI algorithms that can distinguish histologically confirmed malignant skin lesions from benign ones.&lt;/p&gt;
+&lt;p&gt;To mimic non-dermoscopic images, this dataset uses standardized cropped lesion-images of lesions from 3D Total Body Photography (TBP). Vectra WB360, a 3D TBP product from Canfield Scientific, captures the complete visible cutaneous surface area in one macro-quality resolution tomographic image. An AI-based software then identifies individual lesions on a given 3D capture. This allows for the image capture and identification of all lesions on a patient, which are exported as individual 15x15 mm field-of-view cropped photos. The dataset contains every lesion from a subset of thousands of patients seen between the years 2015 and 2024 across nine institutions and three continents.&lt;/p&gt;
+&lt;h2 id=&#34;vision-transformers-vits&#34;&gt;Vision Transformers (ViTs)&lt;/h2&gt;
+&lt;p&gt;ViTs represent a paradigm shift in image classification. Unlike traditional methods, which rely on convolutional layers, ViTs use a transformer architecture that originated in natural language processing (NLP). The transformer model processes images as sequences of patches (tokens) and learns the relationships between them.&lt;/p&gt;
+&lt;p&gt;The main ViT models I tested were:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Standard ViT&lt;/li&gt;
+&lt;li&gt;ViT with a token learning layer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The token learning layer aimed to reduce training time by refining the input tokens before they were fed into the transformer model. This optimization was particularly useful for large datasets like ISIC 2024.&lt;/p&gt;
+&lt;h2 id=&#34;results-and-comparison&#34;&gt;Results and Comparison&lt;/h2&gt;
+&lt;p&gt;ViTs demonstrated strong performance in classifying skin lesions. The ability of ViTs to capture long-range dependencies between image patches proved beneficial in medical image analysis, especially with the token learning layer model, which improved both accuracy and efficiency.&lt;/p&gt;
+&lt;h3 id=&#34;key-findings&#34;&gt;Key Findings&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ViTs:&lt;/strong&gt; Outperformed traditional methods in terms of accuracy and training efficiency.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Token Learning:&lt;/strong&gt; The token learning layer in ViTs significantly reduced training time while maintaining high accuracy.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;This project highlighted the potential of Vision Transformers in the field of medical image analysis, specifically skin cancer classification. ViTs, with their ability to model global context and dependencies, offer a promising alternative to traditional deep learning methods. As ViTs continue to evolve, they could become the go-to model for various computer vision tasks in healthcare.&lt;/p&gt;
+&lt;p&gt;In future work, I plan to explore hybrid models that combine the strengths of ViTs with other architectures, as well as investigate the interpretability of these models in clinical settings.&lt;/p&gt;
+&lt;p&gt;Thanks for reading! Stay tuned for more deep learning adventures!&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Code &lt;a href=&#34;https://github.com/Manodeepray/Visual_transformer_paper_code&#34;&gt;Github&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
+      
+      
+    </item>
     
     <item>
       <title>My First Blog</title>
