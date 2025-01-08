@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Manodeep Ray</title>
-    <link>https://manodeepray.is-a.dev/website/</link>
+    <link>http://localhost:1313/website/</link>
     <description>Recent content on Manodeep Ray</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 05 Sep 2024 20:33:07 +0530</lastBuildDate>
     
-        <atom:link href="https://manodeepray.is-a.dev/website/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://localhost:1313/website/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blogs</title>
-      <link>https://manodeepray.is-a.dev/website/blog/</link>
+      <link>http://localhost:1313/website/blog/</link>
       <pubDate>Thu, 05 Sep 2024 20:33:07 +0530</pubDate>
       
-      <guid>https://manodeepray.is-a.dev/website/blog/</guid>
+      <guid>http://localhost:1313/website/blog/</guid>
       <description></description>
       
       
@@ -24,10 +24,10 @@
     
     <item>
       <title>Projects</title>
-      <link>https://manodeepray.is-a.dev/website/projects/</link>
+      <link>http://localhost:1313/website/projects/</link>
       <pubDate>Wed, 04 Sep 2024 22:41:27 +0530</pubDate>
       
-      <guid>https://manodeepray.is-a.dev/website/projects/</guid>
+      <guid>http://localhost:1313/website/projects/</guid>
       <description></description>
       
       
@@ -35,12 +35,62 @@
     
     <item>
       <title>About</title>
-      <link>https://manodeepray.is-a.dev/website/about/</link>
+      <link>http://localhost:1313/website/about/</link>
       <pubDate>Tue, 23 Jul 2024 22:23:36 +0530</pubDate>
       
-      <guid>https://manodeepray.is-a.dev/website/about/</guid>
+      <guid>http://localhost:1313/website/about/</guid>
       <description>&lt;h2 id=&#34;ʕᴥʔ&#34;&gt;ʕ•ᴥ•ʔ&lt;/h2&gt;
-&lt;p&gt;hi , I&amp;rsquo;m manodeep , an undergraduate student currently on my journey to become a AI/machine learning engineer , solve problems and help people&lt;/p&gt;
+&lt;h2 id=&#34;hi-im-manodeep---an-aspiring-ml-engineer&#34;&gt;Hi I&amp;rsquo;m Manodeep - An Aspiring ML Engineer&lt;/h2&gt;
+&lt;p&gt;Welcome to my first blog post! My name is Manodeep, and I&amp;rsquo;m thrilled to embark on this journey of sharing my experiences, insights, and adventures as an aspiring Machine Learning (ML) engineer.&lt;/p&gt;
+&lt;h3 id=&#34;who-am-i&#34;&gt;Who Am I?&lt;/h3&gt;
+&lt;p&gt;To kick things off, let me introduce myself. I&amp;rsquo;m a curious soul with a passion for all things tech and AI. Currently, I&amp;rsquo;m diving deep into the fascinating world of Machine Learning and AI, exploring how these technologies can shape the future.&lt;/p&gt;
+&lt;h3 id=&#34;my-journey-so-far&#34;&gt;My Journey So Far&lt;/h3&gt;
+&lt;p&gt;I&amp;rsquo;ve been on an exciting path of learning and discovery. Here are a few highlights:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Education:&lt;/strong&gt; I&amp;rsquo;m a pre-final year student at KIIT University in Bhubaneshwar, India, pursuing a B.Tech in Electronics and Computer Science with a CGPA of 9.1.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Experience:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I&amp;rsquo;m currently doing a summer deep learning internship at IIT Bhilai, where I&amp;rsquo;m working on a cancer prediction web app. This project combines the power of image classification using YOLOv8n and symptom-based prediction using a Retrieval-Augmented Generation (RAG) model with Mistral 7B. The app uses Gradio for an intuitive user interface.&lt;/li&gt;
+&lt;li&gt;I also work as a member of RespAI Lab, focusing on LLM reasoning and LLM unlearning. Currently, I am contributing to a research paper exploring methods to improve reasoning capabilities and selective memory unlearning in LLMs.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;projects&#34;&gt;Projects&lt;/h3&gt;
+&lt;p&gt;Here are some of the exciting projects I&amp;rsquo;ve worked on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RAG Chatbot for College:&lt;/strong&gt; Developed a chatbot using Gemini 1.5 Flash, Huggingface, and LangChain for intelligent querying of PDFs, CSVs, and TXT files with customizable LLMs and FAISS for efficient vector storage.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Skin Cancer Classification:&lt;/strong&gt; Created a skin lesion classification system using TensorFlow and Keras, implementing transfer learning models like MobileNet, VGG19, ResNet50, DenseNet121, and XceptionNet. Experimented with Vision Transformers (ViT), including a token-learning variant.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AkamaiCare Chatbot:&lt;/strong&gt; Built a chatbot for hospital operations leveraging Gemini Flash 1.5 API, LlamaIndex, and Streamlit to handle natural language queries related to patient and hospital databases.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;skills-snapshot&#34;&gt;Skills Snapshot&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Languages:&lt;/strong&gt; Python, Java, C, SQL, HTML/CSS&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Frameworks:&lt;/strong&gt; Gradio, Flask, LangChain, Streamlit, Hugging Face, OpenCV, LlamaIndex&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Libraries:&lt;/strong&gt; Pandas, NumPy, Matplotlib, TensorFlow, Keras, PyTorch&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tools:&lt;/strong&gt; Git, GitHub, Kaggle, Jupyter, Colab, VS Code, Linux, Roboflow&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;why-this-blog&#34;&gt;Why This Blog?&lt;/h3&gt;
+&lt;p&gt;This blog is my way of sharing my learning journey, challenges, and breakthroughs. Whether it&amp;rsquo;s a cool project, a new technology, or just a nugget of wisdom I&amp;rsquo;ve picked up along the way, you&amp;rsquo;ll find it here.&lt;/p&gt;
+&lt;h3 id=&#34;lets-connect&#34;&gt;Let&amp;rsquo;s Connect!&lt;/h3&gt;
+&lt;p&gt;I believe that learning is a collaborative process. I&amp;rsquo;d love to hear from you! Whether you have questions, suggestions, or just want to say hi, feel free to reach out.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:manodeepray1@gmail.com&#34;&gt;manodeepray1@gmail.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LinkedIn:&lt;/strong&gt; &lt;a href=&#34;https://www.linkedin.com/in/Manodeep-ray&#34;&gt;linkedin.com/in/Manodeep-ray&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GitHub:&lt;/strong&gt; &lt;a href=&#34;https://github.com/Manodeepray&#34;&gt;github.com/Manodeepray&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Website:&lt;/strong&gt; &lt;a href=&#34;https://manodeepray.is-a.dev&#34;&gt;manodeepray.is-a.dev&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thank you for joining me on this journey. Stay tuned for more updates, and let&amp;rsquo;s make the future smarter and brighter with AI!&lt;/p&gt;
+&lt;p&gt;Best regards,&lt;br&gt;
+Manodeep&lt;/p&gt;
 </description>
       
       

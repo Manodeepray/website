@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head><script src="/website/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=website/livereload" data-no-instant defer></script>
+		<meta charset="utf-8">
+		<title>Oralcare_ai · Manodeep Ray</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="canonical" href="http://localhost:1313/website/projects/oralcare_ai/">
+
+		
+
+		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/normalize.css/normalize.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/firacode/distr/fira_code.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/css/nanum-gothic-coding.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/css/style.css">
+		<script defer data-domain="aakash.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
+	</head>
+	<body>
+
+
+<header>
+<h1>光</h1>
+</header>
+
+<div id="main">
+	<nav><a href="https://manodeepray.is-a.dev/">Home</a> &middot;
+	<a href="http://localhost:1313/website/blog">Blog</a> &middot;
+	<a href="http://localhost:1313/website/projects">Projects</a> &middot;
+	<a rel="me" href="http://localhost:1313/website/about">About</a> &middot;
+	<a rel="me" href="https://github.com/Manodeepray">GitHub</a> &middot;
+	<a rel="me" href="https://www.linkedin.com/in/manodeep-ray-346b3b294/">LinkedIn</a>
+</nav>
+
+
+	<main>
+
+
+<article >
+	<header>
+		<h1>Oralcare_ai</h1>
+		
+			<time datetime='2024-07-24T12:32:52&#43;05:30'>2024-07-24</time>
+		
+	</header>
+
+	<h2 id="its-my-summer-internship-project-at-iit-bhilai">Its my Summer Internship Project at IIT Bhilai</h2>
+<p>During my internship, I worked on an innovative deep learning project focusing on cancer prediction. I developed a web app with Gradio that assists in diagnosing and evaluating oral diseases. Here’s a detailed breakdown of the project:</p>
+<h3 id="part-1-image-classification">Part 1: Image Classification</h3>
+<p><strong>Model:</strong> YOLOv8n<br>
+<strong>Task:</strong> Predicts the type of oral disease (cancer, dental caries, scurvy, periodontal, healthy) using image classification on custom data.</p>
+<p><strong>Advanced Detection:</strong> If cancer is detected, the model then uses object detection to pinpoint the growth location and determines the grade and stage:</p>
+<p><strong>Grades:</strong></p>
+<ul>
+<li><strong>Grade 1:</strong> Similar to normal cells</li>
+<li><strong>Grade 2:</strong> Slightly abnormal</li>
+<li><strong>Grade 3:</strong> Very abnormal</li>
+</ul>
+<p><strong>Stages:</strong></p>
+<ul>
+<li><strong>Stage 1:</strong> Less than 2 cm</li>
+<li><strong>Stage 2:</strong> 2 cm to 4 cm</li>
+<li><strong>Stage 3:</strong> Greater than 4 cm to widespread growth</li>
+</ul>
+<p><strong>Data Collection:</strong> All images were gathered and processed by me using Google extensions.</p>
+<p><strong>Workflow:</strong> The images are fed into the trained YOLOv8n model, which first classifies the disease type. If the disease is classified as cancer, the model performs object detection to identify the specific location of the cancerous growth. The detected area is then analyzed to determine the grade and stage of the cancer based on predefined criteria.</p>
+<h3 id="part-2-symptom-based-prediction">Part 2: Symptom-Based Prediction</h3>
+<p><strong>Input:</strong> Symptoms entered by the patient</p>
+<p><strong>Model:</strong> Retrieval-Augmented Generation (RAG) model on custom PDFs<br>
+<strong>Functionality:</strong> Predicts the grade and stage of oral cancer based on patient symptoms, followed by treatment recommendations.</p>
+<p><strong>Grade and Stage Prediction:</strong> The RAG model takes the patient’s symptoms and matches them with information from custom PDFs to determine the grade and stage of cancer.</p>
+<p><strong>Treatment Recommendations:</strong> Two additional RAG models provide treatment options based on the determined grade and stage, sourcing information from specific PDFs that detail treatments for each grade and stage.</p>
+<p><strong>LLM used:</strong> Mistral 7B</p>
+<h3 id="challenges-and-limitations">Challenges and Limitations</h3>
+<p><strong>LLM Constraints:</strong> Due to size limitations (maximum 10GB on Hugging Face), a lighter LLM was utilized, necessitating the creation of three distinct RAG models (two for treatment recommendations and one for grade and stage evaluation).<br>
+<strong>Multiple API Calls:</strong> Multiple calls to the LLM were required for coherent responses, which could be optimized with a more robust model such as GPT-3 or Gemini. A single, more powerful LLM would enhance processing efficiency and accuracy.<br>
+<strong>Performance:</strong> The current RAG model setup results in longer processing times, impacting the speed of output generation.</p>
+<p><a href="https://www.linkedin.com/posts/manodeep-ray-346b3b294_deeplearning-cancerprediction-ai-activity-7219962641518067712--nht?utm_source=share&amp;utm_medium=member_desktop">Linked in post</a>
+<a href="https://github.com/Manodeepray/oral_health_ai">Github repo </a></p>
+
+
+	
+</article>
+
+	</main>
+
+	<footer>
+		© 2025 
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/us/80x15.png"></a>
+	</footer>
+</div>
+
+	</body>
+</html>
+
+

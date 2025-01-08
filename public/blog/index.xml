@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Manodeep Ray</title>
-    <link>https://manodeepray.is-a.dev/website/blog/</link>
+    <link>http://localhost:1313/website/blog/</link>
     <description>Recent content in Blogs on Manodeep Ray</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 05 Sep 2024 20:33:07 +0530</lastBuildDate>
     
-        <atom:link href="https://manodeepray.is-a.dev/website/blog/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://localhost:1313/website/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Paper on Faster-Vit Archietecture(not yes published)</title>
-      <link>https://manodeepray.is-a.dev/website/blog/isic2024-faster-vit/</link>
+      <title>Faster-Vit Archietecture</title>
+      <link>http://localhost:1313/website/blog/isic2024-faster-vit/</link>
       <pubDate>Thu, 05 Sep 2024 20:33:07 +0530</pubDate>
       
-      <guid>https://manodeepray.is-a.dev/website/blog/isic2024-faster-vit/</guid>
+      <guid>http://localhost:1313/website/blog/isic2024-faster-vit/</guid>
       <description>&lt;h1 id=&#34;exploring-vision-transformers-for-skin-cancer-classification-a-deep-learning-journey&#34;&gt;Exploring Vision Transformers for Skin Cancer Classification: A Deep Learning Journey&lt;/h1&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Skin cancer remains one of the most common cancers globally, making early diagnosis and accurate classification essential. In recent years, deep learning has played a pivotal role in automating the detection and classification of skin lesions. Vision Transformers (ViTs) are emerging as a powerful tool for image classification tasks, including medical image analysis.&lt;/p&gt;
@@ -52,10 +52,10 @@
     
     <item>
       <title>My First Blog</title>
-      <link>https://manodeepray.is-a.dev/website/blog/my-first-blog/</link>
+      <link>http://localhost:1313/website/blog/my-first-blog/</link>
       <pubDate>Tue, 23 Jul 2024 22:49:38 +0530</pubDate>
       
-      <guid>https://manodeepray.is-a.dev/website/blog/my-first-blog/</guid>
+      <guid>http://localhost:1313/website/blog/my-first-blog/</guid>
       <description>&lt;h2 id=&#34;my-first-blog&#34;&gt;My first blog&lt;/h2&gt;
 &lt;h1 id=&#34;hi-im-manodeep---an-aspiring-ml-engineer&#34;&gt;Hi I&amp;rsquo;m Manodeep - An Aspiring ML Engineer&lt;/h1&gt;
 &lt;p&gt;Welcome to my first blog post! My name is Manodeep, and I&amp;rsquo;m thrilled to embark on this journey of sharing my experiences, insights, and adventures as an aspiring Machine Learning (ML) engineer.&lt;/p&gt;

@@ -1,5 +1,5 @@
 +++
-title = 'Paper on Faster-Vit Archietecture(not yes published)'
+title = 'Faster-Vit Archietecture'
 date = 2024-09-05T20:33:07+05:30
 draft = false
 +++
