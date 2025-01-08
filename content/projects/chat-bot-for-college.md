@@ -6,22 +6,24 @@ draft = false
 
 ## Chat Bot for College
 
-### update till 4 - 9 - 24
+Welcome to my chatbot project for the School of Electronics, KIIT University! This chatbot is designed to make information retrieval easier and more efficient for students and faculty.
 
-- I am creating a llm chatbot for my college , the school of Electronics , KIIT university.
+### Features
 
-- I have used RAG model for the chatbot.
+- Built using a Retrieval-Augmented Generation (RAG) model for intelligent responses.
 
-- I have taken the .csv , .pdfs and .txt from the official website of SOEE , KIIT .
+- Processes data in .csv, .pdf, and .txt formats collected from the official SOEE, KIIT website.
 
-- I converted them into FIASS vector database , used HuggingFace embeddings for indexing the data.
+- Uses FAISS vector databases indexed with HuggingFace embeddings for efficient retrieval.
 
-- I created 3 different vector stores and 3 different retrievers and ensembled them using langchain ensemble retriever module.
+- Employs an Ensemble Retriever with weighted averaging and a History-Aware Retriever for seamless multi-turn conversations.
 
-- I am planning on using OpenAI gpt 4 or Claude 3.5 api....currently using meta llama 3b instruct from huggingface api inference.
+- Supports Gemini 1.5 Flash, HuggingFace models (serverless inference), and Ollama on-device models, providing flexibility in model selection.
 
-- I am using create_history_aware_retriever for conversational chatbot.
+- Interactive and user-friendly interface created with Streamlit for smooth interactions and queries.
 
-### Problems:
+### GitHub Repository
 
-the response is non-coherent if I use larger llm like gpt-4 , claude or cohere to make it more coherent
+Check out the code and details of this project on my [GitHub Repository](https://github.com/Manodeepray/kiit-chatbot-llm).
+
+Thank you for exploring this project! Feel free to connect with me if you have suggestions or questions.
