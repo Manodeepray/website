@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Manodeep Ray</title>
-    <link>https://manodeepray.is-a.dev/website/</link>
+    <link>http://localhost:1313/website/</link>
     <description>Recent content on Manodeep Ray</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 05 Sep 2024 20:33:07 +0530</lastBuildDate>
     
-        <atom:link href="https://manodeepray.is-a.dev/website/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://localhost:1313/website/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blogs</title>
-      <link>https://manodeepray.is-a.dev/website/blog/</link>
+      <link>http://localhost:1313/website/blog/</link>
       <pubDate>Thu, 05 Sep 2024 20:33:07 +0530</pubDate>
       
-      <guid>https://manodeepray.is-a.dev/website/blog/</guid>
+      <guid>http://localhost:1313/website/blog/</guid>
       <description></description>
       
       
@@ -24,10 +24,10 @@
     
     <item>
       <title>Projects</title>
-      <link>https://manodeepray.is-a.dev/website/projects/</link>
+      <link>http://localhost:1313/website/projects/</link>
       <pubDate>Wed, 04 Sep 2024 22:41:27 +0530</pubDate>
       
-      <guid>https://manodeepray.is-a.dev/website/projects/</guid>
+      <guid>http://localhost:1313/website/projects/</guid>
       <description></description>
       
       
@@ -35,10 +35,10 @@
     
     <item>
       <title>About</title>
-      <link>https://manodeepray.is-a.dev/website/about/</link>
+      <link>http://localhost:1313/website/about/</link>
       <pubDate>Tue, 23 Jul 2024 22:23:36 +0530</pubDate>
       
-      <guid>https://manodeepray.is-a.dev/website/about/</guid>
+      <guid>http://localhost:1313/website/about/</guid>
       <description>&lt;h2 id=&#34;ʕᴥʔ&#34;&gt;ʕ•ᴥ•ʔ&lt;/h2&gt;
 &lt;h2 id=&#34;hi-im-manodeep---an-aspiring-ml-engineer&#34;&gt;Hi I&amp;rsquo;m Manodeep - An Aspiring ML Engineer&lt;/h2&gt;
 &lt;p&gt;Welcome to my first blog post! My name is Manodeep, and I&amp;rsquo;m thrilled to embark on this journey of sharing my experiences, insights, and adventures as an aspiring Machine Learning (ML) engineer.&lt;/p&gt;

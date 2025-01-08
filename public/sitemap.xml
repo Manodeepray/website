@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://manodeepray.is-a.dev/website/blog/</loc>
+    <loc>http://localhost:1313/website/blog/</loc>
     <lastmod>2024-09-05T20:33:07+05:30</lastmod>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/blog/isic2024-faster-vit/</loc>
+    <loc>http://localhost:1313/website/blog/isic2024-faster-vit/</loc>
     <lastmod>2024-09-05T20:33:07+05:30</lastmod>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/</loc>
+    <loc>http://localhost:1313/website/</loc>
     <lastmod>2024-09-05T20:33:07+05:30</lastmod>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/projects/akamaicare/</loc>
+    <loc>http://localhost:1313/website/projects/akamaicare/</loc>
     <lastmod>2024-09-04T22:41:27+05:30</lastmod>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/projects/chat-bot-for-college/</loc>
+    <loc>http://localhost:1313/website/projects/chat-bot-for-college/</loc>
     <lastmod>2024-09-04T22:41:27+05:30</lastmod>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/projects/</loc>
+    <loc>http://localhost:1313/website/projects/</loc>
     <lastmod>2024-09-04T22:41:27+05:30</lastmod>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/projects/oralcare_ai/</loc>
+    <loc>http://localhost:1313/website/projects/oralcare_ai/</loc>
     <lastmod>2024-07-24T12:32:52+05:30</lastmod>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/projects/offline_ai/</loc>
+    <loc>http://localhost:1313/website/projects/offline_ai/</loc>
     <lastmod>2024-07-24T12:26:09+05:30</lastmod>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/blog/my-first-blog/</loc>
+    <loc>http://localhost:1313/website/blog/my-first-blog/</loc>
     <lastmod>2024-07-23T22:49:38+05:30</lastmod>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/about/</loc>
+    <loc>http://localhost:1313/website/about/</loc>
     <lastmod>2024-07-23T22:23:36+05:30</lastmod>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/categories/</loc>
+    <loc>http://localhost:1313/website/categories/</loc>
   </url><url>
-    <loc>https://manodeepray.is-a.dev/website/tags/</loc>
+    <loc>http://localhost:1313/website/tags/</loc>
   </url>
 </urlset>

@@ -1,5 +1,5 @@
 +++
-title = 'Faster-Vit Archietecture'
+title = 'Faster-Vit Architecture'
 date = 2024-09-05T20:33:07+05:30
 draft = false
 +++
