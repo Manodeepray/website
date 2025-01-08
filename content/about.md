@@ -50,7 +50,7 @@ This blog is my way of sharing my learning journey, challenges, and breakthrough
 I believe that learning is a collaborative process. I'd love to hear from you! Whether you have questions, suggestions, or just want to say hi, feel free to reach out.
 
 - **Email:** manodeepray1@gmail.com
-- **LinkedIn:** [linkedin.com/in/Manodeep-ray](https://www.linkedin.com/in/Manodeep-ray)
+- **LinkedIn:** [linkedin.com/in/Manodeep-ray](https://www.linkedin.com/in/manodeep-ray-346b3b294/)
 - **GitHub:** [github.com/Manodeepray](https://github.com/Manodeepray)
 - **Website:** [manodeepray.is-a.dev](https://manodeepray.is-a.dev)
 
