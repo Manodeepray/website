@@ -8,7 +8,7 @@ Got it! Here's the updated blog-style `.md` with that additional context integra
 
 ---
 
-```markdown
+
 # Building a Classroom Monitoring System with Face Recognition and AI-Powered Lecture Notes 🧠📸
 
 > 📚 *This was my 3rd-year college minor project,* built to explore how AI can enhance classroom engagement, automate attendance, and help with structured note generation.
@@ -89,7 +89,7 @@ sudo apt install tmux
 
 # Add your Groq API key to a .env file
 echo 'GROQ_API_KEY="your_key_here"' > .env
-```
+
 
 ---
 
