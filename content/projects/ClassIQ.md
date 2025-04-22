@@ -4,10 +4,6 @@ date = 2025-04-23T03:06:53+05:30
 draft = false
 +++
 
-Got it! Here's the updated blog-style `.md` with that additional context integrated. I've added a section near the top that sets the scene as a **college minor project**, clarified the **Streamlit demo's purpose**, and explained how the **server-based pipeline** works.
-
----
-
 
 # Building a Classroom Monitoring System with Face Recognition and AI-Powered Lecture Notes 🧠📸
 

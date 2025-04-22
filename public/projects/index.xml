@@ -19,95 +19,114 @@
       <guid>http://localhost:1313/website/projects/classiq/</guid>
       <description>&lt;p&gt;Got it! Here&amp;rsquo;s the updated blog-style &lt;code&gt;.md&lt;/code&gt; with that additional context integrated. I&amp;rsquo;ve added a section near the top that sets the scene as a &lt;strong&gt;college minor project&lt;/strong&gt;, clarified the &lt;strong&gt;Streamlit demo&amp;rsquo;s purpose&lt;/strong&gt;, and explained how the &lt;strong&gt;server-based pipeline&lt;/strong&gt; works.&lt;/p&gt;
 &lt;hr&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# Building a Classroom Monitoring System with Face Recognition and AI-Powered Lecture Notes 🧠📸
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;gt; &lt;/span&gt;&lt;span style=&#34;font-style:italic&#34;&gt;📚 *This was my 3rd-year college minor project,* built to explore how AI can enhance classroom engagement, automate attendance, and help with structured note generation.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;font-style:italic&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
+&lt;h1 id=&#34;building-a-classroom-monitoring-system-with-face-recognition-and-ai-powered-lecture-notes-&#34;&gt;Building a Classroom Monitoring System with Face Recognition and AI-Powered Lecture Notes 🧠📸&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;📚 &lt;em&gt;This was my 3rd-year college minor project,&lt;/em&gt; built to explore how AI can enhance classroom engagement, automate attendance, and help with structured note generation.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-the-vision&#34;&gt;💡 The Vision&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;Classroom Monitoring System&lt;/strong&gt; is a server-based AI pipeline using &lt;strong&gt;computer vision&lt;/strong&gt;, &lt;strong&gt;speech recognition&lt;/strong&gt;, and &lt;strong&gt;LLMs&lt;/strong&gt; to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Detect faces and recognize student identities&lt;/li&gt;
+&lt;li&gt;Track attentiveness throughout a session&lt;/li&gt;
+&lt;li&gt;Transcribe and summarize lectures into structured markdown notes&lt;/li&gt;
+&lt;li&gt;Store and visualize data on a cloud dashboard&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;While the system is designed to work with &lt;strong&gt;edge devices&lt;/strong&gt; (like a classroom Raspberry Pi or local camera unit), I built a &lt;strong&gt;simple Streamlit app&lt;/strong&gt; to demo the functionality on a &lt;strong&gt;single video&lt;/strong&gt; on your laptop.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-how-it-works&#34;&gt;🧩 How It Works&lt;/h2&gt;
+&lt;p&gt;The core system is designed as a &lt;strong&gt;server-based pipeline&lt;/strong&gt;. Once deployed:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;An &lt;strong&gt;edge device&lt;/strong&gt; records a classroom session (video + audio).&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;URL of the processing server (ngrok)&lt;/strong&gt; is entered into the edge device.&lt;/li&gt;
+&lt;li&gt;Every time a new video is sent, the server:
+&lt;ul&gt;
+&lt;li&gt;Detects and recognizes faces&lt;/li&gt;
+&lt;li&gt;Tracks attentiveness&lt;/li&gt;
+&lt;li&gt;Transcribes the audio&lt;/li&gt;
+&lt;li&gt;Uses an LLM to generate structured notes&lt;/li&gt;
+&lt;li&gt;Saves all output to cloud storage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The &lt;strong&gt;Streamlit UI&lt;/strong&gt; (&lt;code&gt;apps/demo_app.py&lt;/code&gt;) showcases this pipeline for a &lt;strong&gt;single demo video&lt;/strong&gt;, giving a preview of the end-to-end process.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-core-features&#34;&gt;✅ Core Features&lt;/h2&gt;
+&lt;p&gt;✅ &lt;strong&gt;Face Detection and Recognition for Attendance&lt;/strong&gt;&lt;br&gt;
+✅ &lt;strong&gt;Frame-Based Attentiveness Tracking&lt;/strong&gt;&lt;br&gt;
+✅ &lt;strong&gt;Audio Transcription via Vosk&lt;/strong&gt;&lt;br&gt;
+✅ &lt;strong&gt;LLM-Powered Summarization (Groq&amp;rsquo;s &lt;code&gt;llama3-8b-8192&lt;/code&gt;)&lt;/strong&gt;&lt;br&gt;
+✅ &lt;strong&gt;Streamlit-Based UI for Demos &amp;amp; Data Exploration&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-tech-stack&#34;&gt;🧠 Tech Stack&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Layer&lt;/th&gt;
+          &lt;th&gt;Tools &amp;amp; Libraries&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Vision&lt;/td&gt;
+          &lt;td&gt;YOLOv11, YuNet (OpenCV)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Transcription&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://alphacephei.com/vosk/models&#34;&gt;Vosk Small EN&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Summarization&lt;/td&gt;
+          &lt;td&gt;Groq LLM (&lt;code&gt;llama3-8b-8192&lt;/code&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Backend&lt;/td&gt;
+          &lt;td&gt;Flask, tmux, ngrok&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;UI/Dashboard&lt;/td&gt;
+          &lt;td&gt;Streamlit&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Deployment&lt;/td&gt;
+          &lt;td&gt;Lightning AI&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-getting-started&#34;&gt;⚙️ Getting Started&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Clone the repo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone &amp;lt;repo-url&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd &amp;lt;repo-folder&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 💡 The Vision
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The &lt;span style=&#34;font-weight:bold&#34;&gt;**Classroom Monitoring System**&lt;/span&gt; is a server-based AI pipeline using &lt;span style=&#34;font-weight:bold&#34;&gt;**computer vision**&lt;/span&gt;, &lt;span style=&#34;font-weight:bold&#34;&gt;**speech recognition**&lt;/span&gt;, and &lt;span style=&#34;font-weight:bold&#34;&gt;**LLMs**&lt;/span&gt; to:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Detect faces and recognize student identities
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Track attentiveness throughout a session
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Transcribe and summarize lectures into structured markdown notes
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Store and visualize data on a cloud dashboard
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;While the system is designed to work with &lt;span style=&#34;font-weight:bold&#34;&gt;**edge devices**&lt;/span&gt; (like a classroom Raspberry Pi or local camera unit), I built a &lt;span style=&#34;font-weight:bold&#34;&gt;**simple Streamlit app**&lt;/span&gt; to demo the functionality on a &lt;span style=&#34;font-weight:bold&#34;&gt;**single video**&lt;/span&gt; on your laptop.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 🧩 How It Works
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The core system is designed as a &lt;span style=&#34;font-weight:bold&#34;&gt;**server-based pipeline**&lt;/span&gt;. Once deployed:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;1.&lt;/span&gt; An &lt;span style=&#34;font-weight:bold&#34;&gt;**edge device**&lt;/span&gt; records a classroom session (video + audio).
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;2.&lt;/span&gt; The &lt;span style=&#34;font-weight:bold&#34;&gt;**URL of the processing server (ngrok)**&lt;/span&gt; is entered into the edge device.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;3.&lt;/span&gt; Every time a new video is sent, the server:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Detects and recognizes faces
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Tracks attentiveness
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Transcribes the audio
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Uses an LLM to generate structured notes
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Saves all output to cloud storage
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The &lt;span style=&#34;font-weight:bold&#34;&gt;**Streamlit UI**&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;`apps/demo_app.py`&lt;/span&gt;) showcases this pipeline for a &lt;span style=&#34;font-weight:bold&#34;&gt;**single demo video**&lt;/span&gt;, giving a preview of the end-to-end process.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## ✅ Core Features
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;✅ &lt;span style=&#34;font-weight:bold&#34;&gt;**Face Detection and Recognition for Attendance**&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;✅ &lt;span style=&#34;font-weight:bold&#34;&gt;**Frame-Based Attentiveness Tracking**&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;✅ &lt;span style=&#34;font-weight:bold&#34;&gt;**Audio Transcription via Vosk**&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;✅ &lt;span style=&#34;font-weight:bold&#34;&gt;**LLM-Powered Summarization (Groq&amp;#39;s `llama3-8b-8192`)**&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;✅ &lt;span style=&#34;font-weight:bold&#34;&gt;**Streamlit-Based UI for Demos &amp;amp; Data Exploration**&lt;/span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 🧠 Tech Stack
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| Layer             | Tools &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;amp;&lt;/span&gt; Libraries                            |
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|------------------|----------------------------------------------|
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| Vision            | YOLOv11, YuNet (OpenCV)                      |
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| Transcription     | [&lt;span style=&#34;color:#f92672&#34;&gt;Vosk Small EN&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;https://alphacephei.com/vosk/models&lt;/span&gt;) |
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| Summarization     | Groq LLM (&lt;span style=&#34;color:#e6db74&#34;&gt;`llama3-8b-8192`&lt;/span&gt;)                  |
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| Backend           | Flask, tmux, ngrok                           |
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| UI/Dashboard      | Streamlit                                    |
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| Deployment        | Lightning AI                                 |
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## ⚙️ Getting Started
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;```bash
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# Clone the repo
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;repo-url&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;repo-folder&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# Create a virtual environment
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Create a virtual environment&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 -m venv venv
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source venv/bin/activate  # or venv\Scripts\activate on Windows
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source venv/bin/activate  &lt;span style=&#34;color:#75715e&#34;&gt;# or venv\Scripts\activate on Windows&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# Install dependencies
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Install dependencies&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install -r requirements.txt
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# Install system packages (Linux)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Install system packages (Linux)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install ffmpeg -y
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# (Optional) Install tmux for background processes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# (Optional) Install tmux for background processes&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install tmux
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# Add your Groq API key to a .env file
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &amp;#39;GROQ_API_KEY=&amp;#34;your_key_here&amp;#34;&amp;#39; &amp;gt; .env
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;-usage-instructions&#34;&gt;🚀 Usage Instructions&lt;/h2&gt;
-&lt;h3 id=&#34;-training-your-own-face-recognition-model&#34;&gt;👤 Training Your Own Face Recognition Model&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;Add your dataset: &lt;code&gt;dataset/{student_name}/{face_images}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Update the dataset path in &lt;code&gt;src/training/train_face_rec.py&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Generate YOLO-ready data:
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python src/training/get_training_data.py
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Add your Groq API key to a .env file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;GROQ_API_KEY=&amp;#34;your_key_here&amp;#34;&amp;#39;&lt;/span&gt; &amp;gt; .env
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 🚀 Usage Instructions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;### 👤 Training Your Own Face Recognition Model&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1. Add your dataset: &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;dataset/&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;student_name&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;/&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;face_images&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2. Update the dataset path in &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;src/training/train_face_rec.py&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3. Generate YOLO-ready data:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#e6db74&#34;&gt;```&lt;/span&gt;bash
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   python src/training/get_training_data.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
 &lt;li&gt;Train the model:
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bash scripts/train.sh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;

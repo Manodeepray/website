@@ -44,95 +44,114 @@
 
 	<p>Got it! Here&rsquo;s the updated blog-style <code>.md</code> with that additional context integrated. I&rsquo;ve added a section near the top that sets the scene as a <strong>college minor project</strong>, clarified the <strong>Streamlit demo&rsquo;s purpose</strong>, and explained how the <strong>server-based pipeline</strong> works.</p>
 <hr>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># Building a Classroom Monitoring System with Face Recognition and AI-Powered Lecture Notes 🧠📸
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">&gt; </span><span style="font-style:italic">📚 *This was my 3rd-year college minor project,* built to explore how AI can enhance classroom engagement, automate attendance, and help with structured note generation.
-</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>
-</span></span><span style="display:flex;"><span>---
+<h1 id="building-a-classroom-monitoring-system-with-face-recognition-and-ai-powered-lecture-notes-">Building a Classroom Monitoring System with Face Recognition and AI-Powered Lecture Notes 🧠📸</h1>
+<blockquote>
+<p>📚 <em>This was my 3rd-year college minor project,</em> built to explore how AI can enhance classroom engagement, automate attendance, and help with structured note generation.</p></blockquote>
+<hr>
+<h2 id="-the-vision">💡 The Vision</h2>
+<p>The <strong>Classroom Monitoring System</strong> is a server-based AI pipeline using <strong>computer vision</strong>, <strong>speech recognition</strong>, and <strong>LLMs</strong> to:</p>
+<ul>
+<li>Detect faces and recognize student identities</li>
+<li>Track attentiveness throughout a session</li>
+<li>Transcribe and summarize lectures into structured markdown notes</li>
+<li>Store and visualize data on a cloud dashboard</li>
+</ul>
+<p>While the system is designed to work with <strong>edge devices</strong> (like a classroom Raspberry Pi or local camera unit), I built a <strong>simple Streamlit app</strong> to demo the functionality on a <strong>single video</strong> on your laptop.</p>
+<hr>
+<h2 id="-how-it-works">🧩 How It Works</h2>
+<p>The core system is designed as a <strong>server-based pipeline</strong>. Once deployed:</p>
+<ol>
+<li>An <strong>edge device</strong> records a classroom session (video + audio).</li>
+<li>The <strong>URL of the processing server (ngrok)</strong> is entered into the edge device.</li>
+<li>Every time a new video is sent, the server:
+<ul>
+<li>Detects and recognizes faces</li>
+<li>Tracks attentiveness</li>
+<li>Transcribes the audio</li>
+<li>Uses an LLM to generate structured notes</li>
+<li>Saves all output to cloud storage</li>
+</ul>
+</li>
+</ol>
+<p>The <strong>Streamlit UI</strong> (<code>apps/demo_app.py</code>) showcases this pipeline for a <strong>single demo video</strong>, giving a preview of the end-to-end process.</p>
+<hr>
+<h2 id="-core-features">✅ Core Features</h2>
+<p>✅ <strong>Face Detection and Recognition for Attendance</strong><br>
+✅ <strong>Frame-Based Attentiveness Tracking</strong><br>
+✅ <strong>Audio Transcription via Vosk</strong><br>
+✅ <strong>LLM-Powered Summarization (Groq&rsquo;s <code>llama3-8b-8192</code>)</strong><br>
+✅ <strong>Streamlit-Based UI for Demos &amp; Data Exploration</strong></p>
+<hr>
+<h2 id="-tech-stack">🧠 Tech Stack</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Layer</th>
+          <th>Tools &amp; Libraries</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Vision</td>
+          <td>YOLOv11, YuNet (OpenCV)</td>
+      </tr>
+      <tr>
+          <td>Transcription</td>
+          <td><a href="https://alphacephei.com/vosk/models">Vosk Small EN</a></td>
+      </tr>
+      <tr>
+          <td>Summarization</td>
+          <td>Groq LLM (<code>llama3-8b-8192</code>)</td>
+      </tr>
+      <tr>
+          <td>Backend</td>
+          <td>Flask, tmux, ngrok</td>
+      </tr>
+      <tr>
+          <td>UI/Dashboard</td>
+          <td>Streamlit</td>
+      </tr>
+      <tr>
+          <td>Deployment</td>
+          <td>Lightning AI</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-getting-started">⚙️ Getting Started</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Clone the repo</span>
+</span></span><span style="display:flex;"><span>git clone &lt;repo-url&gt;
+</span></span><span style="display:flex;"><span>cd &lt;repo-folder&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## 💡 The Vision
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>The <span style="font-weight:bold">**Classroom Monitoring System**</span> is a server-based AI pipeline using <span style="font-weight:bold">**computer vision**</span>, <span style="font-weight:bold">**speech recognition**</span>, and <span style="font-weight:bold">**LLMs**</span> to:
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Detect faces and recognize student identities
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Track attentiveness throughout a session
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Transcribe and summarize lectures into structured markdown notes
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Store and visualize data on a cloud dashboard
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>While the system is designed to work with <span style="font-weight:bold">**edge devices**</span> (like a classroom Raspberry Pi or local camera unit), I built a <span style="font-weight:bold">**simple Streamlit app**</span> to demo the functionality on a <span style="font-weight:bold">**single video**</span> on your laptop.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## 🧩 How It Works
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>The core system is designed as a <span style="font-weight:bold">**server-based pipeline**</span>. Once deployed:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> An <span style="font-weight:bold">**edge device**</span> records a classroom session (video + audio).
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> The <span style="font-weight:bold">**URL of the processing server (ngrok)**</span> is entered into the edge device.
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> Every time a new video is sent, the server:
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> Detects and recognizes faces
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> Tracks attentiveness
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> Transcribes the audio
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> Uses an LLM to generate structured notes
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> Saves all output to cloud storage
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>The <span style="font-weight:bold">**Streamlit UI**</span> (<span style="color:#e6db74">`apps/demo_app.py`</span>) showcases this pipeline for a <span style="font-weight:bold">**single demo video**</span>, giving a preview of the end-to-end process.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## ✅ Core Features
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>✅ <span style="font-weight:bold">**Face Detection and Recognition for Attendance**</span>  
-</span></span><span style="display:flex;"><span>✅ <span style="font-weight:bold">**Frame-Based Attentiveness Tracking**</span>  
-</span></span><span style="display:flex;"><span>✅ <span style="font-weight:bold">**Audio Transcription via Vosk**</span>  
-</span></span><span style="display:flex;"><span>✅ <span style="font-weight:bold">**LLM-Powered Summarization (Groq&#39;s `llama3-8b-8192`)**</span>  
-</span></span><span style="display:flex;"><span>✅ <span style="font-weight:bold">**Streamlit-Based UI for Demos &amp; Data Exploration**</span>  
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## 🧠 Tech Stack
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>| Layer             | Tools <span style="color:#960050;background-color:#1e0010">&amp;</span> Libraries                            |
-</span></span><span style="display:flex;"><span>|------------------|----------------------------------------------|
-</span></span><span style="display:flex;"><span>| Vision            | YOLOv11, YuNet (OpenCV)                      |
-</span></span><span style="display:flex;"><span>| Transcription     | [<span style="color:#f92672">Vosk Small EN</span>](<span style="color:#a6e22e">https://alphacephei.com/vosk/models</span>) |
-</span></span><span style="display:flex;"><span>| Summarization     | Groq LLM (<span style="color:#e6db74">`llama3-8b-8192`</span>)                  |
-</span></span><span style="display:flex;"><span>| Backend           | Flask, tmux, ngrok                           |
-</span></span><span style="display:flex;"><span>| UI/Dashboard      | Streamlit                                    |
-</span></span><span style="display:flex;"><span>| Deployment        | Lightning AI                                 |
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## ⚙️ Getting Started
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>```bash
-</span></span><span style="display:flex;"><span># Clone the repo
-</span></span><span style="display:flex;"><span>git clone &lt;<span style="color:#f92672">repo-url</span>&gt;
-</span></span><span style="display:flex;"><span>cd &lt;<span style="color:#f92672">repo-folder</span>&gt;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># Create a virtual environment
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a virtual environment</span>
 </span></span><span style="display:flex;"><span>python3 -m venv venv
-</span></span><span style="display:flex;"><span>source venv/bin/activate  # or venv\Scripts\activate on Windows
+</span></span><span style="display:flex;"><span>source venv/bin/activate  <span style="color:#75715e"># or venv\Scripts\activate on Windows</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># Install dependencies
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install dependencies</span>
 </span></span><span style="display:flex;"><span>pip install -r requirements.txt
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># Install system packages (Linux)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install system packages (Linux)</span>
 </span></span><span style="display:flex;"><span>sudo apt install ffmpeg -y
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># (Optional) Install tmux for background processes
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># (Optional) Install tmux for background processes</span>
 </span></span><span style="display:flex;"><span>sudo apt install tmux
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># Add your Groq API key to a .env file
-</span></span><span style="display:flex;"><span>echo &#39;GROQ_API_KEY=&#34;your_key_here&#34;&#39; &gt; .env
-</span></span></code></pre></div><hr>
-<h2 id="-usage-instructions">🚀 Usage Instructions</h2>
-<h3 id="-training-your-own-face-recognition-model">👤 Training Your Own Face Recognition Model</h3>
-<ol>
-<li>Add your dataset: <code>dataset/{student_name}/{face_images}</code></li>
-<li>Update the dataset path in <code>src/training/train_face_rec.py</code></li>
-<li>Generate YOLO-ready data:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python src/training/get_training_data.py
-</span></span></code></pre></div></li>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add your Groq API key to a .env file</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;GROQ_API_KEY=&#34;your_key_here&#34;&#39;</span> &gt; .env
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 🚀 Usage Instructions</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 👤 Training Your Own Face Recognition Model</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>1. Add your dataset: <span style="color:#e6db74">`</span>dataset/<span style="color:#f92672">{</span>student_name<span style="color:#f92672">}</span>/<span style="color:#f92672">{</span>face_images<span style="color:#f92672">}</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>2. Update the dataset path in <span style="color:#e6db74">`</span>src/training/train_face_rec.py<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>3. Generate YOLO-ready data:
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">```</span>bash
+</span></span><span style="display:flex;"><span>   python src/training/get_training_data.py
+</span></span></code></pre></div><ol start="4">
 <li>Train the model:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash scripts/train.sh
 </span></span></code></pre></div></li>
