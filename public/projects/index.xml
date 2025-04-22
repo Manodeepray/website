@@ -17,9 +17,7 @@
       <pubDate>Wed, 23 Apr 2025 03:06:53 +0530</pubDate>
       
       <guid>http://localhost:1313/website/projects/classiq/</guid>
-      <description>&lt;p&gt;Got it! Here&amp;rsquo;s the updated blog-style &lt;code&gt;.md&lt;/code&gt; with that additional context integrated. I&amp;rsquo;ve added a section near the top that sets the scene as a &lt;strong&gt;college minor project&lt;/strong&gt;, clarified the &lt;strong&gt;Streamlit demo&amp;rsquo;s purpose&lt;/strong&gt;, and explained how the &lt;strong&gt;server-based pipeline&lt;/strong&gt; works.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;building-a-classroom-monitoring-system-with-face-recognition-and-ai-powered-lecture-notes-&#34;&gt;Building a Classroom Monitoring System with Face Recognition and AI-Powered Lecture Notes 🧠📸&lt;/h1&gt;
+      <description>&lt;h1 id=&#34;building-a-classroom-monitoring-system-with-face-recognition-and-ai-powered-lecture-notes-&#34;&gt;Building a Classroom Monitoring System with Face Recognition and AI-Powered Lecture Notes 🧠📸&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;📚 &lt;em&gt;This was my 3rd-year college minor project,&lt;/em&gt; built to explore how AI can enhance classroom engagement, automate attendance, and help with structured note generation.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
@@ -94,39 +92,29 @@
 &lt;/table&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;-getting-started&#34;&gt;⚙️ Getting Started&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Clone the repo&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone &amp;lt;repo-url&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd &amp;lt;repo-folder&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Create a virtual environment&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 -m venv venv
+&lt;p&gt;Clone the repo&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/manodeepray/minor_project
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd minor_project
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Create a virtual environment&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 -m venv venv
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source venv/bin/activate  &lt;span style=&#34;color:#75715e&#34;&gt;# or venv\Scripts\activate on Windows&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Install dependencies&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install -r requirements.txt
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Install system packages (Linux)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install ffmpeg -y
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# (Optional) Install tmux for background processes&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install tmux
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Add your Groq API key to a .env file&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;GROQ_API_KEY=&amp;#34;your_key_here&amp;#34;&amp;#39;&lt;/span&gt; &amp;gt; .env
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 🚀 Usage Instructions&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;### 👤 Training Your Own Face Recognition Model&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1. Add your dataset: &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;dataset/&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;student_name&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;/&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;face_images&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2. Update the dataset path in &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;src/training/train_face_rec.py&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3. Generate YOLO-ready data:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#e6db74&#34;&gt;```&lt;/span&gt;bash
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   python src/training/get_training_data.py
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Install dependencies&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Install system packages (Linux)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install ffmpeg -y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(Optional) Install tmux for background processes&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install tmux
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;add-your-groq-api-key-to-a-env-file&#34;&gt;Add your Groq API key to a .env file&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;GROQ_API_KEY=&amp;#34;your_key_here&amp;#34;&amp;#39;&lt;/span&gt; &amp;gt; .env
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;usage-instructions&#34;&gt;Usage Instructions&lt;/h2&gt;
+&lt;h3 id=&#34;training-the-face-recognition-model-with-your-own-data&#34;&gt;Training The Face Recognition Model With Your Own Data&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Add your dataset: &lt;code&gt;dataset/{student_name}/{face_images}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Update the dataset path in &lt;code&gt;src/training/train_face_rec.py&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Generate YOLO-ready data:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python src/training/get_training_data.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;Train the model:
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bash scripts/train.sh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
@@ -134,26 +122,25 @@
 &lt;h3 id=&#34;-running-the-server-pipeline&#34;&gt;🖥️ Running the Server Pipeline&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Optionally use tmux to manage long processes&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bash scripts/run_servers.sh
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Or run components manually&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Or run components manually&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python processor.py
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python server.py
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ngrok http &lt;span style=&#34;color:#ae81ff&#34;&gt;5000&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;✅ Once deployed, enter the &lt;strong&gt;ngrok link&lt;/strong&gt; in your edge device. Each uploaded classroom session video will be processed and results generated automatically.&lt;/p&gt;
-&lt;h3 id=&#34;-try-the-demo-ui&#34;&gt;🌐 Try the Demo UI&lt;/h3&gt;
+&lt;h3 id=&#34;try-the-demo-ui&#34;&gt;Try the Demo UI&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Demo for single video&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;streamlit run apps/demo_app.py
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# View saved notes and data&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;streamlit run apps/files_ui.py
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;-customizing-summarization&#34;&gt;🛠️ Customizing Summarization&lt;/h2&gt;
+&lt;h2 id=&#34;customizing-summarization&#34;&gt;Customizing Summarization&lt;/h2&gt;
 &lt;p&gt;You can switch the LLM or update the prompt for note generation in:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# src/pipelines/core/llm_integration.py&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;GROQ_LLM_MODEL_ID &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;llama3-8b-8192&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And edit the prompt in &lt;code&gt;generate_notes()&lt;/code&gt; to match your desired note structure.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-results--observations&#34;&gt;📊 Results &amp;amp; Observations&lt;/h2&gt;
+&lt;h2 id=&#34;results--observations&#34;&gt;Results &amp;amp; Observations&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Face Recognition Accuracy&lt;/strong&gt;: 91.67% (Top-1)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Attentiveness Metric&lt;/strong&gt;:
@@ -164,24 +151,16 @@
 &lt;hr&gt;
 &lt;h2 id=&#34;-future-plans&#34;&gt;🔮 Future Plans&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;🧠 Shift to custom facial-points-based recognition model&lt;/li&gt;
-&lt;li&gt;📢 Add real-time inattentiveness alerts&lt;/li&gt;
-&lt;li&gt;🧪 Refine LLM prompts for more structured results&lt;/li&gt;
-&lt;li&gt;☁️ Switch from CSV to PostgreSQL for scalable dashboard&lt;/li&gt;
+&lt;li&gt;Shift to custom facial-points-based recognition model&lt;/li&gt;
+&lt;li&gt;Add real-time inattentiveness alerts&lt;/li&gt;
+&lt;li&gt;Refine LLM prompts for more structured results&lt;/li&gt;
+&lt;li&gt;Switch from CSV to PostgreSQL for scalable dashboard&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-about-me&#34;&gt;🙌 About Me&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Manodeep Ray&lt;/strong&gt; – Passionate about deep learning, LLM , CV, and building real-world systems. This project was built as part of my &lt;strong&gt;college 3rd-year minor&lt;/strong&gt;, blending CV + NLP in an educational setting.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;-license&#34;&gt;📄 License&lt;/h2&gt;
-&lt;p&gt;Licensed under &lt;strong&gt;Creative Commons (CC)&lt;/strong&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Thanks for checking it out! If you liked this, drop a ⭐ on &lt;a href=&#34;#&#34;&gt;GitHub&lt;/a&gt; or connect with me to chat about AI + education 🚀&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
----
-
-Let me know if you want a matching social media caption, GitHub repo description, or thumbnail image to go with this blog!
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;h2 id=&#34;about-me&#34;&gt;About Me&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Manodeep Ray&lt;/strong&gt; – Passionate about deep learning, LLM , CV, and building real-world systems. This project was built as part of my &lt;strong&gt;college 3rd-year minor project&lt;/strong&gt;, blending CV + NLP in an educational setting.&lt;/p&gt;
+&lt;p&gt;Thanks for checking it out! If you liked this, drop a ⭐ on &lt;a href=&#34;https://github.com/Manodeepray/minor_project/&#34;&gt;GitHub&lt;/a&gt; or connect with me to chat about AI + education&lt;/p&gt;
+</description>
       
       
     </item>

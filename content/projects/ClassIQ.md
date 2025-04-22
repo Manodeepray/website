@@ -65,33 +65,41 @@ The **Streamlit UI** (`apps/demo_app.py`) showcases this pipeline for a **single
 
 ## ⚙️ Getting Started
 
-```bash
-# Clone the repo
-git clone <repo-url>
-cd <repo-folder>
 
-# Create a virtual environment
+Clone the repo
+```bash
+git clone https://github.com/manodeepray/minor_project
+cd minor_project
+```
+
+Create a virtual environment
+```bash
 python3 -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
+```
 
-# Install dependencies
+Install dependencies
+```bash
 pip install -r requirements.txt
-
-# Install system packages (Linux)
+```
+Install system packages (Linux)
+```bash
 sudo apt install ffmpeg -y
-
-# (Optional) Install tmux for background processes
+```
+(Optional) Install tmux for background processes
+```bash
 sudo apt install tmux
-
+```
 # Add your Groq API key to a .env file
+```bash
 echo 'GROQ_API_KEY="your_key_here"' > .env
 
-
+```
 ---
 
-## 🚀 Usage Instructions
+## Usage Instructions
 
-### 👤 Training Your Own Face Recognition Model
+### Training The Face Recognition Model With Your Own Data
 
 1. Add your dataset: `dataset/{student_name}/{face_images}`
 2. Update the dataset path in `src/training/train_face_rec.py`
@@ -109,7 +117,8 @@ echo 'GROQ_API_KEY="your_key_here"' > .env
 ```bash
 # Optionally use tmux to manage long processes
 bash scripts/run_servers.sh
-
+```
+```bash
 # Or run components manually
 python processor.py
 python server.py
@@ -118,7 +127,7 @@ ngrok http 5000
 
 ✅ Once deployed, enter the **ngrok link** in your edge device. Each uploaded classroom session video will be processed and results generated automatically.
 
-### 🌐 Try the Demo UI
+### Try the Demo UI
 
 ```bash
 # Demo for single video
@@ -130,7 +139,7 @@ streamlit run apps/files_ui.py
 
 ---
 
-## 🛠️ Customizing Summarization
+## Customizing Summarization
 
 You can switch the LLM or update the prompt for note generation in:
 ```python
@@ -142,7 +151,7 @@ And edit the prompt in `generate_notes()` to match your desired note structure.
 
 ---
 
-## 📊 Results & Observations
+## Results & Observations
 
 - **Face Recognition Accuracy**: 91.67% (Top-1)
 - **Attentiveness Metric**:
@@ -155,27 +164,17 @@ And edit the prompt in `generate_notes()` to match your desired note structure.
 
 ## 🔮 Future Plans
 
-- 🧠 Shift to custom facial-points-based recognition model
-- 📢 Add real-time inattentiveness alerts
-- 🧪 Refine LLM prompts for more structured results
-- ☁️ Switch from CSV to PostgreSQL for scalable dashboard
+- Shift to custom facial-points-based recognition model
+- Add real-time inattentiveness alerts
+- Refine LLM prompts for more structured results
+- Switch from CSV to PostgreSQL for scalable dashboard
 ---
 
-## 🙌 About Me
+## About Me
 
-**Manodeep Ray** – Passionate about deep learning, LLM , CV, and building real-world systems. This project was built as part of my **college 3rd-year minor**, blending CV + NLP in an educational setting.
+**Manodeep Ray** – Passionate about deep learning, LLM , CV, and building real-world systems. This project was built as part of my **college 3rd-year minor project**, blending CV + NLP in an educational setting.
 
----
 
-## 📄 License
 
-Licensed under **Creative Commons (CC)**.
 
----
-
-Thanks for checking it out! If you liked this, drop a ⭐ on [GitHub](#) or connect with me to chat about AI + education 🚀
-```
-
----
-
-Let me know if you want a matching social media caption, GitHub repo description, or thumbnail image to go with this blog!
+Thanks for checking it out! If you liked this, drop a ⭐ on [GitHub](https://github.com/Manodeepray/minor_project/) or connect with me to chat about AI + education 
