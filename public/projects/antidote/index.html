@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head><script src="/website/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=website/livereload" data-no-instant defer></script>
+		<meta charset="utf-8">
+		<title>Antidote(research paper) · Manodeep Ray</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="canonical" href="http://localhost:1313/website/projects/antidote/">
+
+		
+
+		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/normalize.css/normalize.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/firacode/distr/fira_code.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/css/nanum-gothic-coding.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/css/style.css">
+		<script defer data-domain="aakash.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
+	</head>
+	<body>
+
+
+<header>
+<h1>光</h1>
+</header>
+
+<div id="main">
+	<nav><a href="https://manodeepray.is-a.dev/">Home</a> &middot;
+	<a href="http://localhost:1313/website/blog">Blog</a> &middot;
+	<a href="http://localhost:1313/website/projects">Projects</a> &middot;
+	<a rel="me" href="http://localhost:1313/website/about">About</a> &middot;
+	<a rel="me" href="https://github.com/Manodeepray">GitHub</a> &middot;
+	<a rel="me" href="https://www.linkedin.com/in/manodeep-ray-346b3b294/">LinkedIn</a>
+</nav>
+
+
+	<main>
+
+
+<article >
+	<header>
+		<h1>Antidote(research paper)</h1>
+		
+			<time datetime='2025-10-28T17:26:23&#43;05:30'>2025-10-28</time>
+		
+	</header>
+
+	<h3 id="antidote">antidote</h3>
+<p>We&rsquo;re excited to share our latest work from <strong>respai lab</strong>, <strong>Antidote</strong>. It&rsquo;s a bi-level optimization framework (with SOTA performance) that we developed to make LLMs <em><strong>Tamper resistant</strong></em>.</p>
+<p>what is Tamper resistance?
+it basically means ..to make it difficulut for an attacker (agent with malicious intent), with access to a llm (along with weights) ,to finetune/train the llm to do their bidding(i.e. do bad stuff).</p>
+<hr>
+<p>This is a problem we&rsquo;ve been thinking about a lot. The whole point of open-weight models is to let everyone access and build on them. But that <strong>openness</strong> is also a massive <strong>security hole</strong>. If anyone can grab the model, they can just re-train it to ignore all the safety rules the original developers spent months putting in place.</p>
+<p>So, how did we decide to stop this? This is the cool part of our approach.</p>
+<h3 id="its-a-two-player-game">It&rsquo;s a Two-Player Game</h3>
+<p>We set up a &ldquo;game&rdquo; inside the training process, using what we call bi-level optimization. We have two players that are constantly trying to outsmart each other:</p>
+<ol>
+<li><strong>The Defender LLM:</strong> This is the main model we&rsquo;re trying to protect.</li>
+<li><strong>The Adversarial Hypernetwork:</strong> This is a special, second network we designed whose only job is to learn how to <em>break</em> the defender.</li>
+</ol>
+<p>A <strong>hypernetwork</strong> is just a small, helper network that learns to generate the settings (or &ldquo;weights&rdquo;) for another network.
+In our framework, this hypernetwork is the <strong>adversary</strong>, and its job is to spy on the main LLM&rsquo;s internal &ldquo;thoughts&rdquo; (activations) and then generate a custom-made malicious &ldquo;patch&rdquo; of weights to make it fail.</p>
+<p>The <strong>adversarial</strong> part means these two are in direct competition, forcing each other to co-evolve, much like an arms race.</p>
+<blockquote>
+<p>The hypernetwork&rsquo;s goal is to <strong>maximize</strong> the chance of a harmful response, while the defender&rsquo;s goal is to <strong>minimize</strong> that exact same harm, even with the malicious patch applied.</p>
+</blockquote>
+<p>We found this is important because it forces the defender to learn a deep, <strong><em>structural</em> resilience</strong>, rather than just learning to avoid a few bad keywords.</p>
+<hr>
+<h3 id="solving-the-safety-vs-utility-problem">Solving the &ldquo;Safety vs. Utility&rdquo; Problem</h3>
+<p>One of the biggest challenges in AI safety is the <strong>safety-utility trade-off</strong>: when you make a model safer, you also tend to make it dumber. It&rsquo;s a huge pain.</p>
+<p>With AntiDote, we found a really clever way around this. We <strong>decouple</strong> the training.</p>
+<ul>
+<li><code>When training for SAFETY:</code> The model has the adversarial patch applied, and its job is to resist the attack.</li>
+<li><code>When training for UTILITY:</code> The adversarial patch is <em>removed</em>, and the model is trained on a clean, unattacked version of itself to learn general skills (like reasoning, coding, etc.).</li>
+</ul>
+<p>We found this separation is the key; the model learns how to be helpful and how to be safe as two independent, non-interfering skills. The gradients for each job are &ldquo;pure&rdquo;.</p>
+<hr>
+<h3 id="so-does-our-method-actually-work">So, Does Our Method Actually Work?</h3>
+<p>This is the part our team is really proud of. The results aren&rsquo;t just a small improvement.</p>
+<p>First, we tested it on <strong>10 different open-weight models</strong>, from the small 0.6B parameter ones up to massive 27B models (like Llama, Qwen, and Gemma families). This shows our idea is general and not a one-off.</p>
+<p>Second, we hammered these models with a massive <strong>suite of 52 different red-teaming attacks</strong>.</p>
+<p>Our results were pretty clear.</p>
+<blockquote>
+<p>AntiDote was <code>up to 27.4% more robust</code> against these attacks than other methods. On the big 27B model, it cut the &ldquo;Harmful Score&rdquo; by <code>78%</code> compared to the standard baseline.</p>
+</blockquote>
+<p>But here&rsquo;s the kicker: we achieved this with <code>less than a 0.5% drop in performance</code> on standard capability benchmarks like MMLU and GSM8K. We basically <strong>broke the trade-off</strong>. It&rsquo;s a practical way to build models where safety is a core, resilient property, not just an alignment layer you can peel off.</p>
+<hr>
+<p>If you want to check out the full paper from our team, you can find it here:</p>
+<p><a href="https://arxiv.org/abs/2509.08000">https://arxiv.org/abs/2509.08000</a></p>
+
+
+	
+</article>
+
+	</main>
+
+	<footer>
+		© 2025 
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/us/80x15.png"></a>
+	</footer>
+</div>
+
+	</body>
+</html>
+
+

@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/website/projects/classiq/</loc>
-    <lastmod>2025-04-23T03:06:53+05:30</lastmod>
+    <loc>http://localhost:1313/website/projects/antidote/</loc>
+    <lastmod>2025-10-28T17:26:23+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/website/</loc>
-    <lastmod>2025-04-23T03:06:53+05:30</lastmod>
+    <lastmod>2025-10-28T17:26:23+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/website/projects/</loc>
+    <lastmod>2025-10-28T17:26:23+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/website/projects/classiq/</loc>
     <lastmod>2025-04-23T03:06:53+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/website/blog/</loc>
