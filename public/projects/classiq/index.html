@@ -6,13 +6,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="canonical" href="http://localhost:1313/website/projects/classiq/">
 
-		
+		<meta name="author" content="Manodeep Ray">
 
 		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/normalize.css/normalize.css">
 		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/firacode/distr/fira_code.css">
 		<link rel="stylesheet" href="http://localhost:1313/website/css/nanum-gothic-coding.css">
 		<link rel="stylesheet" href="http://localhost:1313/website/css/style.css">
-		<script defer data-domain="aakash.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
+		<script defer data-domain="manodeepray.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
 	</head>
 	<body>
 
@@ -42,150 +42,103 @@
 		
 	</header>
 
-	<h1 id="building-a-classroom-monitoring-system-with-face-recognition-and-ai-powered-lecture-notes-">Building a Classroom Monitoring System with Face Recognition and AI-Powered Lecture Notes 🧠📸</h1>
+	<h1 id="building-a-classroom-monitor-with-face-recognition-and-ai-powered-lecture-notes">Building a Classroom Monitor with Face Recognition and AI-Powered Lecture Notes</h1>
 <blockquote>
-<p>📚 <em>This was my 3rd-year college minor project,</em> built to explore how AI can enhance classroom engagement, automate attendance, and help with structured note generation.</p>
+<p>This was my 3rd-year college minor project. I built it to explore how AI could be used for classroom engagement, automating attendance, and helping out with note generation.</p>
 </blockquote>
 <hr>
-<h2 id="-the-vision">💡 The Vision</h2>
-<p>The <strong>Classroom Monitoring System</strong> is a server-based AI pipeline using <strong>computer vision</strong>, <strong>speech recognition</strong>, and <strong>LLMs</strong> to:</p>
+<h2 id="what-i-was-trying-to-do">What I Was Trying to Do</h2>
+<p>The basic idea was to build an AI system on a server that uses computer vision, speech recognition, and an LLM to:</p>
 <ul>
-<li>Detect faces and recognize student identities</li>
-<li>Track attentiveness throughout a session</li>
-<li>Transcribe and summarize lectures into structured markdown notes</li>
-<li>Store and visualize data on a cloud dashboard</li>
+<li>Detect faces and recognize student identities.</li>
+<li>Track attentiveness during a class.</li>
+<li>Transcribe and summarize the lecture into structured markdown notes.</li>
+<li>Store and show all this data on a cloud dashboard.</li>
 </ul>
-<p>While the system is designed to work with <strong>edge devices</strong> (like a classroom Raspberry Pi or local camera unit), I built a <strong>simple Streamlit app</strong> to demo the functionality on a <strong>single video</strong> on your laptop.</p>
+<p>The system is designed to work with a device in the classroom (like a Raspberry Pi or a local camera), but I built a <strong>simple Streamlit app</strong> to demo the functionality on a <strong>single video</strong> right on your laptop.</p>
 <hr>
-<h2 id="-how-it-works">🧩 How It Works</h2>
-<p>The core system is designed as a <strong>server-based pipeline</strong>. Once deployed:</p>
+<h2 id="how-it-works">How It Works</h2>
+<p>The core system is designed as a <strong>server-based pipeline</strong>. Once it&rsquo;s deployed:</p>
 <ol>
-<li>An <strong>edge device</strong> records a classroom session (video + audio).</li>
-<li>The <strong>URL of the processing server (ngrok)</strong> is entered into the edge device.</li>
+<li>An <strong>edge device</strong> (like a Pi) records a classroom session (video + audio).</li>
+<li>The <strong>URL of the processing server (ngrok)</strong> is entered into that device.</li>
 <li>Every time a new video is sent, the server:
 <ul>
 <li>Detects and recognizes faces</li>
 <li>Tracks attentiveness</li>
 <li>Transcribes the audio</li>
 <li>Uses an LLM to generate structured notes</li>
-<li>Saves all output to cloud storage</li>
+<li>Saves all the output to cloud storage</li>
 </ul>
 </li>
 </ol>
-<p>The <strong>Streamlit UI</strong> (<code>apps/demo_app.py</code>) showcases this pipeline for a <strong>single demo video</strong>, giving a preview of the end-to-end process.</p>
+<p>The <strong>Streamlit UI</strong> (<code>apps/demo_app.py</code>) just runs this whole process for a <strong>single demo video</strong>, giving a preview of how it all fits together.</p>
 <hr>
-<h2 id="-core-features">✅ Core Features</h2>
-<p>✅ <strong>Face Detection and Recognition for Attendance</strong><br>
-✅ <strong>Frame-Based Attentiveness Tracking</strong><br>
-✅ <strong>Audio Transcription via Vosk</strong><br>
-✅ <strong>LLM-Powered Summarization (Groq&rsquo;s <code>llama3-8b-8192</code>)</strong><br>
-✅ <strong>Streamlit-Based UI for Demos &amp; Data Exploration</strong></p>
-<hr>
-<h2 id="-tech-stack">🧠 Tech Stack</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Layer</th>
-          <th>Tools &amp; Libraries</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Vision</td>
-          <td>YOLOv11, YuNet (OpenCV)</td>
-      </tr>
-      <tr>
-          <td>Transcription</td>
-          <td><a href="https://alphacephei.com/vosk/models">Vosk Small EN</a></td>
-      </tr>
-      <tr>
-          <td>Summarization</td>
-          <td>Groq LLM (<code>llama3-8b-8192</code>)</td>
-      </tr>
-      <tr>
-          <td>Backend</td>
-          <td>Flask, tmux, ngrok</td>
-      </tr>
-      <tr>
-          <td>UI/Dashboard</td>
-          <td>Streamlit</td>
-      </tr>
-      <tr>
-          <td>Deployment</td>
-          <td>Lightning AI</td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h2 id="-getting-started">⚙️ Getting Started</h2>
-<p>Clone the repo</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/manodeepray/minor_project
-</span></span><span style="display:flex;"><span>cd minor_project
-</span></span></code></pre></div><p>Create a virtual environment</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python3 -m venv venv
-</span></span><span style="display:flex;"><span>source venv/bin/activate  <span style="color:#75715e"># or venv\Scripts\activate on Windows</span>
-</span></span></code></pre></div><p>Install dependencies</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install -r requirements.txt
-</span></span></code></pre></div><p>Install system packages (Linux)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install ffmpeg -y
-</span></span></code></pre></div><p>(Optional) Install tmux for background processes</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install tmux
-</span></span></code></pre></div><h1 id="add-your-groq-api-key-to-a-env-file">Add your Groq API key to a .env file</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;GROQ_API_KEY=&#34;your_key_here&#34;&#39;</span> &gt; .env
-</span></span></code></pre></div><hr>
-<h2 id="usage-instructions">Usage Instructions</h2>
-<h3 id="training-the-face-recognition-model-with-your-own-data">Training The Face Recognition Model With Your Own Data</h3>
-<ol>
-<li>Add your dataset: <code>dataset/{student_name}/{face_images}</code></li>
-<li>Update the dataset path in <code>src/training/train_face_rec.py</code></li>
-<li>Generate YOLO-ready data:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python src/training/get_training_data.py
-</span></span></code></pre></div></li>
-<li>Train the model:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash scripts/train.sh
-</span></span></code></pre></div></li>
-</ol>
-<h3 id="-running-the-server-pipeline">🖥️ Running the Server Pipeline</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Optionally use tmux to manage long processes</span>
-</span></span><span style="display:flex;"><span>bash scripts/run_servers.sh
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Or run components manually</span>
-</span></span><span style="display:flex;"><span>python processor.py
-</span></span><span style="display:flex;"><span>python server.py
-</span></span><span style="display:flex;"><span>ngrok http <span style="color:#ae81ff">5000</span>
-</span></span></code></pre></div><p>✅ Once deployed, enter the <strong>ngrok link</strong> in your edge device. Each uploaded classroom session video will be processed and results generated automatically.</p>
-<h3 id="try-the-demo-ui">Try the Demo UI</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Demo for single video</span>
-</span></span><span style="display:flex;"><span>streamlit run apps/demo_app.py
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># View saved notes and data</span>
-</span></span><span style="display:flex;"><span>streamlit run apps/files_ui.py
-</span></span></code></pre></div><hr>
-<h2 id="customizing-summarization">Customizing Summarization</h2>
-<p>You can switch the LLM or update the prompt for note generation in:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># src/pipelines/core/llm_integration.py</span>
-</span></span><span style="display:flex;"><span>GROQ_LLM_MODEL_ID <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;llama3-8b-8192&#34;</span>
-</span></span></code></pre></div><p>And edit the prompt in <code>generate_notes()</code> to match your desired note structure.</p>
-<hr>
-<h2 id="results--observations">Results &amp; Observations</h2>
+<h2 id="core-features">Core Features</h2>
 <ul>
-<li><strong>Face Recognition Accuracy</strong>: 91.67% (Top-1)</li>
-<li><strong>Attentiveness Metric</strong>:
-<pre tabindex="0"><code>Attentiveness = (frames student is visible) / (total frames)
-</code></pre></li>
-<li><strong>Lecture Notes Quality</strong>: Depends on LLM + prompt, human-evaluated</li>
+<li>Face Detection and Recognition for Attendance</li>
+<li>Frame-Based Attentiveness Tracking</li>
+<li>Audio Transcription via Vosk</li>
+<li>LLM-Powered Summarization (Groq&rsquo;s <code>llama3-8b-8192</code>)</li>
+<li>Streamlit-Based UI for Demos &amp; Data Exploration</li>
 </ul>
 <hr>
-<h2 id="-future-plans">🔮 Future Plans</h2>
+<h2 id="tech-stack">Tech Stack</h2>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left">Layer</th>
+					<th style="text-align: left">Tools &amp; Libraries</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">Vision</td>
+					<td style="text-align: left">YOLOv11, YuNet (OpenCV)</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">Transcription</td>
+					<td style="text-align: left"><a href="https://alphacephei.com/vosk/models">Vosk Small EN</a></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">Summarization</td>
+					<td style="text-align: left">Groq LLM (<code>llama3-8b-8192</code>)</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">Backend</td>
+					<td style="text-align: left">Flask, tmux, ngrok</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">UI/Dashboard</td>
+					<td style="text-align: left">Streamlit</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">Deployment</td>
+					<td style="text-align: left">Lightning AI</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="some-results">Some Results</h2>
 <ul>
-<li>Shift to custom facial-points-based recognition model</li>
-<li>Add real-time inattentiveness alerts</li>
-<li>Refine LLM prompts for more structured results</li>
-<li>Switch from CSV to PostgreSQL for scalable dashboard</li>
+<li><strong>Face Recognition Accuracy</strong>: 91.67% (Top-1)</li>
+<li><strong>Attentiveness Metric</strong>: I used a simple metric for this:
+<pre tabindex="0"><code>Attentiveness = (frames student is visible) / (total frames)
+</code></pre></li>
+<li><strong>Lecture Notes Quality</strong>: This was pretty subjective and depends heavily on the LLM and the prompt.</li>
+</ul>
+<hr>
+<h2 id="what-id-do-next">What I&rsquo;d Do Next</h2>
+<ul>
+<li>Shift to a custom facial-points-based recognition model.</li>
+<li>Add real-time inattentiveness alerts.</li>
+<li>Refine the LLM prompts for more structured results.</li>
+<li>Switch from CSV to PostgreSQL for a more scalable dashboard.</li>
 </ul>
 <hr>
 <h2 id="about-me">About Me</h2>
-<p><strong>Manodeep Ray</strong> – Passionate about deep learning, LLM , CV, and building real-world systems. This project was built as part of my <strong>college 3rd-year minor project</strong>, blending CV + NLP in an educational setting.</p>
-<p>Thanks for checking it out! If you liked this, drop a ⭐ on <a href="https://github.com/Manodeepray/minor_project/">GitHub</a> or connect with me to chat about AI + education</p>
+<p><strong>Manodeep Ray</strong> – I&rsquo;m really into deep learning, LLMs, CV, and building real-world systems. This project was built as part of my <strong>college 3rd-year minor project</strong> and was a fun way to blend CV and NLP in an educational setting.</p>
+<p>Thanks for checking it out! If you liked this, drop a ⭐ on <a href="https://github.com/Manodeepray/minor_project/">GitHub</a> or connect with me to chat about AI + education.</p>
 
 
 	
@@ -194,7 +147,7 @@
 	</main>
 
 	<footer>
-		© 2025 
+		© 2026 Manodeep Ray
 		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/us/80x15.png"></a>
 	</footer>
 </div>

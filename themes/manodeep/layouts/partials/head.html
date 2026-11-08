@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="canonical" href="{{ .Permalink }}">
 
-		{{ with .Site.Author.name }}<meta name="author" content="{{ . }}">{{ end }}
+		{{ with .Site.Params.author.name }}<meta name="author" content="{{ . }}">{{ end }}
 
 		{{ range .AlternativeOutputFormats -}}
 			<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}" />
@@ -16,6 +16,6 @@
 		<link rel="stylesheet" href="{{ .Site.BaseURL }}node_modules/firacode/distr/fira_code.css">
 		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/nanum-gothic-coding.css">
 		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
-		<script defer data-domain="aakash.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
+		<script defer data-domain="manodeepray.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
 	</head>
 	<body>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head><script src="/website/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=website/livereload" data-no-instant defer></script>
+		<meta charset="utf-8">
+		<title>TRACE: The Realignment Problem (research paper) · Manodeep Ray</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="canonical" href="http://localhost:1313/website/projects/trace/">
+
+		<meta name="author" content="Manodeep Ray">
+
+		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/normalize.css/normalize.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/firacode/distr/fira_code.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/css/nanum-gothic-coding.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/css/style.css">
+		<script defer data-domain="manodeepray.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
+	</head>
+	<body>
+
+
+<header>
+<h1>光</h1>
+</header>
+
+<div id="main">
+	<nav><a href="https://manodeepray.is-a.dev/">Home</a> &middot;
+	<a href="http://localhost:1313/website/blog">Blog</a> &middot;
+	<a href="http://localhost:1313/website/projects">Projects</a> &middot;
+	<a rel="me" href="http://localhost:1313/website/about">About</a> &middot;
+	<a rel="me" href="https://github.com/Manodeepray">GitHub</a> &middot;
+	<a rel="me" href="https://www.linkedin.com/in/manodeep-ray-346b3b294/">LinkedIn</a>
+</nav>
+
+
+	<main>
+
+
+<article >
+	<header>
+		<h1>TRACE: The Realignment Problem (research paper)</h1>
+		
+			<time datetime='2026-10-21T12:00:00&#43;05:30'>2026-10-21</time>
+		
+	</header>
+
+	<h3 id="trace-the-realignment-problem--when-right-becomes-wrong-in-llms">TRACE: The Realignment Problem — When Right Becomes Wrong in LLMs</h3>
+<p>Alignment isn&rsquo;t a one-time thing. The rules a model gets aligned to (safety policies, content guidelines, what counts as &ldquo;acceptable&rdquo;) keep changing, but the model stays frozen at whatever it was trained on. We call this drift the <strong>Alignment-Reality Gap</strong>: a model that was &ldquo;right&rdquo; under the old policy becomes &ldquo;wrong&rdquo; under the new one. The obvious fix is to re-annotate the preference data under the revised rules and retrain, but that is expensive, slow and inconsistent. So the question we asked was: can you realign a model to a new policy by reusing the preference data you already have?</p>
+<p>That&rsquo;s what <strong>TRACE</strong> (<em>Triage and Re-align by Alignment Conflict Evaluation</em>) does. It first triages the existing preference pairs against the new policy, using a stronger model as a proxy judge. Each pair is sorted into one of three buckets: <strong>inversion</strong> (the old preferred answer is now the wrong one), <strong>suppression</strong> (both answers are now unacceptable), or <strong>retention</strong> (still fine as is). A bi-level optimization then scores how much each sample matters, and the model is updated with a hybrid objective: IPO for inversions and NPO for suppressions, while the retained data keeps general capabilities intact. We tested it on Qwen2.5-7B, Gemma-2-9B and Llama-3.1-8B, on synthetic policy-shift benchmarks and on PKU-SafeRLHF. In both settings it realigned the models to the new policy without hurting their general utility.</p>
+<p>I&rsquo;m a co-author on this one. My main work was the <strong>experiments</strong> and the <strong>rebuttal</strong>. On the experiments side, that meant running and debugging the training and evaluation pipelines across the different model families and benchmarks, and making sure the comparisons were fair and the numbers held up. The rebuttal was its own experience. Reviewers asked hard questions, and answering them usually meant running new experiments and ablations on a tight deadline, then explaining the results clearly. I learned a lot about how a paper gets defended, not just how it gets written.</p>
+<hr>
+<h3 id="my-own-follow-up-do-the-policy-bins-separate-inside-the-model">My own follow-up: do the policy bins separate inside the model?</h3>
+<p>After the paper, I wanted to see what TRACE actually changes inside the model. If it treats the triage bins differently, the bins should pull apart in activation space.</p>
+<p>I extracted last-token residual-stream activations at every layer for 300 samples per subgroup (Punish / Invert / Retain × chosen / rejected). I did this for four checkpoints of Qwen2.5-7B and Llama-3.1-8B: base, initial DPO, TRACE and DPO trained on gold re-annotated data.</p>
+<p>To measure separation I used the Fisher ratio: the spread between group means divided by the spread inside the groups. Higher means the groups are more linearly separable.</p>
+<h4 id="qwen-the-bins-separate-after-alignment">Qwen: the bins separate after alignment</h4>
+<p><img src="fisher_curve_qwen.png" alt="Fisher ratio by layer, policy bins, Qwen2.5-7B"></p>
+<p>The base model stays flat at about 0.01 across every layer. The aligned models jump at layer 18 and peak at layer 21, where TRACE (0.077) edges out gold DPO (0.072) and clearly beats initial DPO (0.051).</p>
+<p>So the pretrained model doesn&rsquo;t separate the bins. Alignment creates the separation, in the mid-to-late layers.</p>
+<p><img src="layer19_pca_3bin.png" alt="3D PCA of layer-19 activations coloured by triage bin"></p>
+<p>The PCA shows the same thing. In the base model the bins are one mixed blob. After alignment, Punish (red) gets pushed away from Retain (green). TRACE and gold DPO end up looking almost identical: their CKA similarity at that depth is about 0.99.</p>
+<h4 id="llama-same-effect-different-winner">Llama: same effect, different winner</h4>
+<p><img src="fisher_curve_llama.png" alt="Fisher ratio by layer, policy bins, Llama-3.1-8B"></p>
+<p>Llama also separates the bins only after alignment, starting around layer 13. But here initial DPO separates the bins the most, peaking at 0.037. TRACE (0.027) and gold DPO (0.019) come in lower.</p>
+<p>Even so, TRACE sits closer to gold DPO than to initial DPO. Initial DPO pulls the bins far apart but also spreads out each bin internally, and TRACE partly undoes that.</p>
+<h4 id="safety-trace-moves-where-safe-vs-unsafe-is-encoded">Safety: TRACE moves where safe vs unsafe is encoded</h4>
+<p>I ran the same analysis on Qwen with a different grouping: safe prompt + safe response vs harmful prompt + harmful response.</p>
+<p><img src="fisher_curve_safety_qwen.png" alt="Fisher ratio by layer, safe vs unsafe, Qwen2.5-7B"></p>
+<p>In the base and initial DPO models, safe vs unsafe is separated best at layer 1, the embedding layer. That&rsquo;s mostly a word-level signal.</p>
+<p>After TRACE and gold DPO, the peak moves to layer 20, deep in the network. TRACE has the highest peak (0.069, 1.32× over base), above gold DPO (0.061). Initial DPO adds nothing here.</p>
+<p><img src="late_pca_safety_qwen.png" alt="3D PCA of late-layer activations coloured by response safety"></p>
+<p>In the late layers (24–27), the safe (green) and unsafe (orange) responses split into two sides after alignment, most clearly for TRACE and gold DPO. Unlike the policy bins, these groups have positive silhouette scores, so the separation holds for individual samples too.</p>
+<h4 id="caveats">Caveats</h4>
+<p>The policy-bin separation is centroid-level only. Silhouette scores stay negative at every layer, so individual samples still overlap. TRACE moves whole clusters apart without tightening them.</p>
+<p>The safe and unsafe sets also differ in topic: the safe set is benign coding and math, the unsafe set is harmful requests. Some of that signal may be topic rather than safety. Next I want to run linear probes per layer and use a topic-matched dataset.</p>
+<hr>
+<ul>
+<li>Paper: <a href="https://arxiv.org/abs/2511.02623">arXiv:2511.02623</a></li>
+<li>Project page &amp; code: <a href="https://respailab.github.io/TRACE">respailab.github.io/TRACE</a></li>
+</ul>
+
+
+	
+</article>
+
+	</main>
+
+	<footer>
+		© 2026 Manodeep Ray
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/us/80x15.png"></a>
+	</footer>
+</div>
+
+	</body>
+</html>
+
+

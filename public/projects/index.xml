@@ -6,10 +6,55 @@
     <description>Recent content in Projects on Manodeep Ray</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Oct 2025 17:26:23 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 12:00:00 +0530</lastBuildDate>
     
         <atom:link href="http://localhost:1313/website/projects/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TRACE: The Realignment Problem (research paper)</title>
+      <link>http://localhost:1313/website/projects/trace/</link>
+      <pubDate>Wed, 21 Oct 2026 12:00:00 +0530</pubDate>
+      
+      <guid>http://localhost:1313/website/projects/trace/</guid>
+      <description>&lt;h3 id=&#34;trace-the-realignment-problem--when-right-becomes-wrong-in-llms&#34;&gt;TRACE: The Realignment Problem — When Right Becomes Wrong in LLMs&lt;/h3&gt;
+&lt;p&gt;Alignment isn&amp;rsquo;t a one-time thing. The rules a model gets aligned to (safety policies, content guidelines, what counts as &amp;ldquo;acceptable&amp;rdquo;) keep changing, but the model stays frozen at whatever it was trained on. We call this drift the &lt;strong&gt;Alignment-Reality Gap&lt;/strong&gt;: a model that was &amp;ldquo;right&amp;rdquo; under the old policy becomes &amp;ldquo;wrong&amp;rdquo; under the new one. The obvious fix is to re-annotate the preference data under the revised rules and retrain, but that is expensive, slow and inconsistent. So the question we asked was: can you realign a model to a new policy by reusing the preference data you already have?&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s what &lt;strong&gt;TRACE&lt;/strong&gt; (&lt;em&gt;Triage and Re-align by Alignment Conflict Evaluation&lt;/em&gt;) does. It first triages the existing preference pairs against the new policy, using a stronger model as a proxy judge. Each pair is sorted into one of three buckets: &lt;strong&gt;inversion&lt;/strong&gt; (the old preferred answer is now the wrong one), &lt;strong&gt;suppression&lt;/strong&gt; (both answers are now unacceptable), or &lt;strong&gt;retention&lt;/strong&gt; (still fine as is). A bi-level optimization then scores how much each sample matters, and the model is updated with a hybrid objective: IPO for inversions and NPO for suppressions, while the retained data keeps general capabilities intact. We tested it on Qwen2.5-7B, Gemma-2-9B and Llama-3.1-8B, on synthetic policy-shift benchmarks and on PKU-SafeRLHF. In both settings it realigned the models to the new policy without hurting their general utility.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m a co-author on this one. My main work was the &lt;strong&gt;experiments&lt;/strong&gt; and the &lt;strong&gt;rebuttal&lt;/strong&gt;. On the experiments side, that meant running and debugging the training and evaluation pipelines across the different model families and benchmarks, and making sure the comparisons were fair and the numbers held up. The rebuttal was its own experience. Reviewers asked hard questions, and answering them usually meant running new experiments and ablations on a tight deadline, then explaining the results clearly. I learned a lot about how a paper gets defended, not just how it gets written.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;my-own-follow-up-do-the-policy-bins-separate-inside-the-model&#34;&gt;My own follow-up: do the policy bins separate inside the model?&lt;/h3&gt;
+&lt;p&gt;After the paper, I wanted to see what TRACE actually changes inside the model. If it treats the triage bins differently, the bins should pull apart in activation space.&lt;/p&gt;
+&lt;p&gt;I extracted last-token residual-stream activations at every layer for 300 samples per subgroup (Punish / Invert / Retain × chosen / rejected). I did this for four checkpoints of Qwen2.5-7B and Llama-3.1-8B: base, initial DPO, TRACE and DPO trained on gold re-annotated data.&lt;/p&gt;
+&lt;p&gt;To measure separation I used the Fisher ratio: the spread between group means divided by the spread inside the groups. Higher means the groups are more linearly separable.&lt;/p&gt;
+&lt;h4 id=&#34;qwen-the-bins-separate-after-alignment&#34;&gt;Qwen: the bins separate after alignment&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;fisher_curve_qwen.png&#34; alt=&#34;Fisher ratio by layer, policy bins, Qwen2.5-7B&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The base model stays flat at about 0.01 across every layer. The aligned models jump at layer 18 and peak at layer 21, where TRACE (0.077) edges out gold DPO (0.072) and clearly beats initial DPO (0.051).&lt;/p&gt;
+&lt;p&gt;So the pretrained model doesn&amp;rsquo;t separate the bins. Alignment creates the separation, in the mid-to-late layers.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;layer19_pca_3bin.png&#34; alt=&#34;3D PCA of layer-19 activations coloured by triage bin&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The PCA shows the same thing. In the base model the bins are one mixed blob. After alignment, Punish (red) gets pushed away from Retain (green). TRACE and gold DPO end up looking almost identical: their CKA similarity at that depth is about 0.99.&lt;/p&gt;
+&lt;h4 id=&#34;llama-same-effect-different-winner&#34;&gt;Llama: same effect, different winner&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;fisher_curve_llama.png&#34; alt=&#34;Fisher ratio by layer, policy bins, Llama-3.1-8B&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Llama also separates the bins only after alignment, starting around layer 13. But here initial DPO separates the bins the most, peaking at 0.037. TRACE (0.027) and gold DPO (0.019) come in lower.&lt;/p&gt;
+&lt;p&gt;Even so, TRACE sits closer to gold DPO than to initial DPO. Initial DPO pulls the bins far apart but also spreads out each bin internally, and TRACE partly undoes that.&lt;/p&gt;
+&lt;h4 id=&#34;safety-trace-moves-where-safe-vs-unsafe-is-encoded&#34;&gt;Safety: TRACE moves where safe vs unsafe is encoded&lt;/h4&gt;
+&lt;p&gt;I ran the same analysis on Qwen with a different grouping: safe prompt + safe response vs harmful prompt + harmful response.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;fisher_curve_safety_qwen.png&#34; alt=&#34;Fisher ratio by layer, safe vs unsafe, Qwen2.5-7B&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In the base and initial DPO models, safe vs unsafe is separated best at layer 1, the embedding layer. That&amp;rsquo;s mostly a word-level signal.&lt;/p&gt;
+&lt;p&gt;After TRACE and gold DPO, the peak moves to layer 20, deep in the network. TRACE has the highest peak (0.069, 1.32× over base), above gold DPO (0.061). Initial DPO adds nothing here.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;late_pca_safety_qwen.png&#34; alt=&#34;3D PCA of late-layer activations coloured by response safety&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In the late layers (24–27), the safe (green) and unsafe (orange) responses split into two sides after alignment, most clearly for TRACE and gold DPO. Unlike the policy bins, these groups have positive silhouette scores, so the separation holds for individual samples too.&lt;/p&gt;
+&lt;h4 id=&#34;caveats&#34;&gt;Caveats&lt;/h4&gt;
+&lt;p&gt;The policy-bin separation is centroid-level only. Silhouette scores stay negative at every layer, so individual samples still overlap. TRACE moves whole clusters apart without tightening them.&lt;/p&gt;
+&lt;p&gt;The safe and unsafe sets also differ in topic: the safe set is benign coding and math, the unsafe set is harmful requests. Some of that signal may be topic rather than safety. Next I want to run linear probes per layer and use a topic-matched dataset.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Paper: &lt;a href=&#34;https://arxiv.org/abs/2511.02623&#34;&gt;arXiv:2511.02623&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Project page &amp;amp; code: &lt;a href=&#34;https://respailab.github.io/TRACE&#34;&gt;respailab.github.io/TRACE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+      
+    </item>
     
     <item>
       <title>Antidote(research paper)</title>
@@ -70,150 +115,103 @@ In our framework, this hypernetwork is the &lt;strong&gt;adversary&lt;/strong&gt
       <pubDate>Wed, 23 Apr 2025 03:06:53 +0530</pubDate>
       
       <guid>http://localhost:1313/website/projects/classiq/</guid>
-      <description>&lt;h1 id=&#34;building-a-classroom-monitoring-system-with-face-recognition-and-ai-powered-lecture-notes-&#34;&gt;Building a Classroom Monitoring System with Face Recognition and AI-Powered Lecture Notes 🧠📸&lt;/h1&gt;
+      <description>&lt;h1 id=&#34;building-a-classroom-monitor-with-face-recognition-and-ai-powered-lecture-notes&#34;&gt;Building a Classroom Monitor with Face Recognition and AI-Powered Lecture Notes&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;📚 &lt;em&gt;This was my 3rd-year college minor project,&lt;/em&gt; built to explore how AI can enhance classroom engagement, automate attendance, and help with structured note generation.&lt;/p&gt;
+&lt;p&gt;This was my 3rd-year college minor project. I built it to explore how AI could be used for classroom engagement, automating attendance, and helping out with note generation.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-the-vision&#34;&gt;💡 The Vision&lt;/h2&gt;
-&lt;p&gt;The &lt;strong&gt;Classroom Monitoring System&lt;/strong&gt; is a server-based AI pipeline using &lt;strong&gt;computer vision&lt;/strong&gt;, &lt;strong&gt;speech recognition&lt;/strong&gt;, and &lt;strong&gt;LLMs&lt;/strong&gt; to:&lt;/p&gt;
+&lt;h2 id=&#34;what-i-was-trying-to-do&#34;&gt;What I Was Trying to Do&lt;/h2&gt;
+&lt;p&gt;The basic idea was to build an AI system on a server that uses computer vision, speech recognition, and an LLM to:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Detect faces and recognize student identities&lt;/li&gt;
-&lt;li&gt;Track attentiveness throughout a session&lt;/li&gt;
-&lt;li&gt;Transcribe and summarize lectures into structured markdown notes&lt;/li&gt;
-&lt;li&gt;Store and visualize data on a cloud dashboard&lt;/li&gt;
+&lt;li&gt;Detect faces and recognize student identities.&lt;/li&gt;
+&lt;li&gt;Track attentiveness during a class.&lt;/li&gt;
+&lt;li&gt;Transcribe and summarize the lecture into structured markdown notes.&lt;/li&gt;
+&lt;li&gt;Store and show all this data on a cloud dashboard.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;While the system is designed to work with &lt;strong&gt;edge devices&lt;/strong&gt; (like a classroom Raspberry Pi or local camera unit), I built a &lt;strong&gt;simple Streamlit app&lt;/strong&gt; to demo the functionality on a &lt;strong&gt;single video&lt;/strong&gt; on your laptop.&lt;/p&gt;
+&lt;p&gt;The system is designed to work with a device in the classroom (like a Raspberry Pi or a local camera), but I built a &lt;strong&gt;simple Streamlit app&lt;/strong&gt; to demo the functionality on a &lt;strong&gt;single video&lt;/strong&gt; right on your laptop.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-how-it-works&#34;&gt;🧩 How It Works&lt;/h2&gt;
-&lt;p&gt;The core system is designed as a &lt;strong&gt;server-based pipeline&lt;/strong&gt;. Once deployed:&lt;/p&gt;
+&lt;h2 id=&#34;how-it-works&#34;&gt;How It Works&lt;/h2&gt;
+&lt;p&gt;The core system is designed as a &lt;strong&gt;server-based pipeline&lt;/strong&gt;. Once it&amp;rsquo;s deployed:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;An &lt;strong&gt;edge device&lt;/strong&gt; records a classroom session (video + audio).&lt;/li&gt;
-&lt;li&gt;The &lt;strong&gt;URL of the processing server (ngrok)&lt;/strong&gt; is entered into the edge device.&lt;/li&gt;
+&lt;li&gt;An &lt;strong&gt;edge device&lt;/strong&gt; (like a Pi) records a classroom session (video + audio).&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;URL of the processing server (ngrok)&lt;/strong&gt; is entered into that device.&lt;/li&gt;
 &lt;li&gt;Every time a new video is sent, the server:
 &lt;ul&gt;
 &lt;li&gt;Detects and recognizes faces&lt;/li&gt;
 &lt;li&gt;Tracks attentiveness&lt;/li&gt;
 &lt;li&gt;Transcribes the audio&lt;/li&gt;
 &lt;li&gt;Uses an LLM to generate structured notes&lt;/li&gt;
-&lt;li&gt;Saves all output to cloud storage&lt;/li&gt;
+&lt;li&gt;Saves all the output to cloud storage&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The &lt;strong&gt;Streamlit UI&lt;/strong&gt; (&lt;code&gt;apps/demo_app.py&lt;/code&gt;) showcases this pipeline for a &lt;strong&gt;single demo video&lt;/strong&gt;, giving a preview of the end-to-end process.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;Streamlit UI&lt;/strong&gt; (&lt;code&gt;apps/demo_app.py&lt;/code&gt;) just runs this whole process for a &lt;strong&gt;single demo video&lt;/strong&gt;, giving a preview of how it all fits together.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-core-features&#34;&gt;✅ Core Features&lt;/h2&gt;
-&lt;p&gt;✅ &lt;strong&gt;Face Detection and Recognition for Attendance&lt;/strong&gt;&lt;br&gt;
-✅ &lt;strong&gt;Frame-Based Attentiveness Tracking&lt;/strong&gt;&lt;br&gt;
-✅ &lt;strong&gt;Audio Transcription via Vosk&lt;/strong&gt;&lt;br&gt;
-✅ &lt;strong&gt;LLM-Powered Summarization (Groq&amp;rsquo;s &lt;code&gt;llama3-8b-8192&lt;/code&gt;)&lt;/strong&gt;&lt;br&gt;
-✅ &lt;strong&gt;Streamlit-Based UI for Demos &amp;amp; Data Exploration&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;-tech-stack&#34;&gt;🧠 Tech Stack&lt;/h2&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Layer&lt;/th&gt;
-          &lt;th&gt;Tools &amp;amp; Libraries&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Vision&lt;/td&gt;
-          &lt;td&gt;YOLOv11, YuNet (OpenCV)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Transcription&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&#34;https://alphacephei.com/vosk/models&#34;&gt;Vosk Small EN&lt;/a&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Summarization&lt;/td&gt;
-          &lt;td&gt;Groq LLM (&lt;code&gt;llama3-8b-8192&lt;/code&gt;)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Backend&lt;/td&gt;
-          &lt;td&gt;Flask, tmux, ngrok&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;UI/Dashboard&lt;/td&gt;
-          &lt;td&gt;Streamlit&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Deployment&lt;/td&gt;
-          &lt;td&gt;Lightning AI&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;-getting-started&#34;&gt;⚙️ Getting Started&lt;/h2&gt;
-&lt;p&gt;Clone the repo&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/manodeepray/minor_project
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd minor_project
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Create a virtual environment&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 -m venv venv
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source venv/bin/activate  &lt;span style=&#34;color:#75715e&#34;&gt;# or venv\Scripts\activate on Windows&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Install dependencies&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install -r requirements.txt
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Install system packages (Linux)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install ffmpeg -y
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(Optional) Install tmux for background processes&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install tmux
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;add-your-groq-api-key-to-a-env-file&#34;&gt;Add your Groq API key to a .env file&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;GROQ_API_KEY=&amp;#34;your_key_here&amp;#34;&amp;#39;&lt;/span&gt; &amp;gt; .env
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;usage-instructions&#34;&gt;Usage Instructions&lt;/h2&gt;
-&lt;h3 id=&#34;training-the-face-recognition-model-with-your-own-data&#34;&gt;Training The Face Recognition Model With Your Own Data&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;Add your dataset: &lt;code&gt;dataset/{student_name}/{face_images}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Update the dataset path in &lt;code&gt;src/training/train_face_rec.py&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Generate YOLO-ready data:
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python src/training/get_training_data.py
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;Train the model:
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bash scripts/train.sh
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;-running-the-server-pipeline&#34;&gt;🖥️ Running the Server Pipeline&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Optionally use tmux to manage long processes&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bash scripts/run_servers.sh
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Or run components manually&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python processor.py
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python server.py
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ngrok http &lt;span style=&#34;color:#ae81ff&#34;&gt;5000&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;✅ Once deployed, enter the &lt;strong&gt;ngrok link&lt;/strong&gt; in your edge device. Each uploaded classroom session video will be processed and results generated automatically.&lt;/p&gt;
-&lt;h3 id=&#34;try-the-demo-ui&#34;&gt;Try the Demo UI&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Demo for single video&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;streamlit run apps/demo_app.py
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# View saved notes and data&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;streamlit run apps/files_ui.py
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;customizing-summarization&#34;&gt;Customizing Summarization&lt;/h2&gt;
-&lt;p&gt;You can switch the LLM or update the prompt for note generation in:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# src/pipelines/core/llm_integration.py&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;GROQ_LLM_MODEL_ID &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;llama3-8b-8192&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And edit the prompt in &lt;code&gt;generate_notes()&lt;/code&gt; to match your desired note structure.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;results--observations&#34;&gt;Results &amp;amp; Observations&lt;/h2&gt;
+&lt;h2 id=&#34;core-features&#34;&gt;Core Features&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Face Recognition Accuracy&lt;/strong&gt;: 91.67% (Top-1)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Attentiveness Metric&lt;/strong&gt;:
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Attentiveness = (frames student is visible) / (total frames)
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lecture Notes Quality&lt;/strong&gt;: Depends on LLM + prompt, human-evaluated&lt;/li&gt;
+&lt;li&gt;Face Detection and Recognition for Attendance&lt;/li&gt;
+&lt;li&gt;Frame-Based Attentiveness Tracking&lt;/li&gt;
+&lt;li&gt;Audio Transcription via Vosk&lt;/li&gt;
+&lt;li&gt;LLM-Powered Summarization (Groq&amp;rsquo;s &lt;code&gt;llama3-8b-8192&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Streamlit-Based UI for Demos &amp;amp; Data Exploration&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;-future-plans&#34;&gt;🔮 Future Plans&lt;/h2&gt;
+&lt;h2 id=&#34;tech-stack&#34;&gt;Tech Stack&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Layer&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Tools &amp;amp; Libraries&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Vision&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;YOLOv11, YuNet (OpenCV)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Transcription&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://alphacephei.com/vosk/models&#34;&gt;Vosk Small EN&lt;/a&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Summarization&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Groq LLM (&lt;code&gt;llama3-8b-8192&lt;/code&gt;)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Backend&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Flask, tmux, ngrok&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;UI/Dashboard&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Streamlit&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Deployment&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Lightning AI&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;some-results&#34;&gt;Some Results&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Shift to custom facial-points-based recognition model&lt;/li&gt;
-&lt;li&gt;Add real-time inattentiveness alerts&lt;/li&gt;
-&lt;li&gt;Refine LLM prompts for more structured results&lt;/li&gt;
-&lt;li&gt;Switch from CSV to PostgreSQL for scalable dashboard&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Face Recognition Accuracy&lt;/strong&gt;: 91.67% (Top-1)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Attentiveness Metric&lt;/strong&gt;: I used a simple metric for this:
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Attentiveness = (frames student is visible) / (total frames)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lecture Notes Quality&lt;/strong&gt;: This was pretty subjective and depends heavily on the LLM and the prompt.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;what-id-do-next&#34;&gt;What I&amp;rsquo;d Do Next&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Shift to a custom facial-points-based recognition model.&lt;/li&gt;
+&lt;li&gt;Add real-time inattentiveness alerts.&lt;/li&gt;
+&lt;li&gt;Refine the LLM prompts for more structured results.&lt;/li&gt;
+&lt;li&gt;Switch from CSV to PostgreSQL for a more scalable dashboard.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;about-me&#34;&gt;About Me&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Manodeep Ray&lt;/strong&gt; – Passionate about deep learning, LLM , CV, and building real-world systems. This project was built as part of my &lt;strong&gt;college 3rd-year minor project&lt;/strong&gt;, blending CV + NLP in an educational setting.&lt;/p&gt;
-&lt;p&gt;Thanks for checking it out! If you liked this, drop a ⭐ on &lt;a href=&#34;https://github.com/Manodeepray/minor_project/&#34;&gt;GitHub&lt;/a&gt; or connect with me to chat about AI + education&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Manodeep Ray&lt;/strong&gt; – I&amp;rsquo;m really into deep learning, LLMs, CV, and building real-world systems. This project was built as part of my &lt;strong&gt;college 3rd-year minor project&lt;/strong&gt; and was a fun way to blend CV and NLP in an educational setting.&lt;/p&gt;
+&lt;p&gt;Thanks for checking it out! If you liked this, drop a ⭐ on &lt;a href=&#34;https://github.com/Manodeepray/minor_project/&#34;&gt;GitHub&lt;/a&gt; or connect with me to chat about AI + education.&lt;/p&gt;
 </description>
       
       
