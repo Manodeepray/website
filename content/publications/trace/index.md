@@ -1,5 +1,6 @@
 +++
-title = 'TRACE: The Realignment Problem (research paper)'
+title = 'TRACE: The Realignment Problem'
+aliases = ['/projects/trace/']
 date = 2026-10-21T12:00:00+05:30
 draft = false
 +++

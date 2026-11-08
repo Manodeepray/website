@@ -1,6 +1,6 @@
-
 +++
-title = 'Antidote(research paper)'
+title = 'AntiDote: Bi-level Adversarial Training for Tamper-Resistant LLMs'
+aliases = ['/projects/antidote/']
 date = 2025-10-28T17:26:23+05:30
 draft = false
 +++
@@ -68,3 +68,11 @@ But here's the kicker: we achieved this with `less than a 0.5% drop in performan
 If you want to check out the full paper from our team, you can find it here:
 
 [https://arxiv.org/abs/2509.08000](https://arxiv.org/abs/2509.08000)
+
+---
+
+### Presenting at AAAI-26
+
+I presented AntiDote as a poster at AAAI-26 in Singapore.
+
+![Presenting the AntiDote poster at AAAI-26, Singapore](aaai26_poster.jpg)
