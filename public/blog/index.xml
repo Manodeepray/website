@@ -6,10 +6,49 @@
     <description>Recent content in Blogs on Manodeep Ray</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Sep 2024 20:33:07 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 12:00:00 +0530</lastBuildDate>
     
         <atom:link href="http://localhost:1313/website/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Do the TRACE Policy Bins Separate Inside the Model?</title>
+      <link>http://localhost:1313/website/blog/trace-interp/</link>
+      <pubDate>Sun, 08 Nov 2026 12:00:00 +0530</pubDate>
+      
+      <guid>http://localhost:1313/website/blog/trace-interp/</guid>
+      <description>&lt;p&gt;After working on &lt;a href=&#34;http://localhost:1313/website/publications/trace/&#34;&gt;TRACE&lt;/a&gt;, I wanted to see what it actually changes inside the model. TRACE realigns an LLM to a new policy by sorting old preference pairs into three bins (inversion, suppression, retention) and training on each bin differently. If that works, the bins should pull apart in activation space.&lt;/p&gt;
+&lt;p&gt;I extracted last-token residual-stream activations at every layer for 300 samples per subgroup (Punish / Invert / Retain × chosen / rejected). I did this for four checkpoints of Qwen2.5-7B and Llama-3.1-8B: base, initial DPO, TRACE and DPO trained on gold re-annotated data.&lt;/p&gt;
+&lt;p&gt;To measure separation I used the Fisher ratio: the spread between group means divided by the spread inside the groups. Higher means the groups are more linearly separable.&lt;/p&gt;
+&lt;h4 id=&#34;qwen-the-bins-separate-after-alignment&#34;&gt;Qwen: the bins separate after alignment&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;fisher_curve_qwen.png&#34; alt=&#34;Fisher ratio by layer, policy bins, Qwen2.5-7B&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The base model stays flat at about 0.01 across every layer. The aligned models jump at layer 18 and peak at layer 21, where TRACE (0.077) edges out gold DPO (0.072) and clearly beats initial DPO (0.051).&lt;/p&gt;
+&lt;p&gt;So the pretrained model doesn&amp;rsquo;t separate the bins. Alignment creates the separation, in the mid-to-late layers.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;layer19_pca_3bin.png&#34; alt=&#34;3D PCA of layer-19 activations coloured by triage bin&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The PCA shows the same thing. In the base model the bins are one mixed blob. After alignment, Punish (red) gets pushed away from Retain (green). TRACE and gold DPO end up looking almost identical: their CKA similarity at that depth is about 0.99.&lt;/p&gt;
+&lt;h4 id=&#34;llama-same-effect-different-winner&#34;&gt;Llama: same effect, different winner&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;fisher_curve_llama.png&#34; alt=&#34;Fisher ratio by layer, policy bins, Llama-3.1-8B&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Llama also separates the bins only after alignment, starting around layer 13. But here initial DPO separates the bins the most, peaking at 0.037. TRACE (0.027) and gold DPO (0.019) come in lower.&lt;/p&gt;
+&lt;p&gt;Even so, TRACE sits closer to gold DPO than to initial DPO. Initial DPO pulls the bins far apart but also spreads out each bin internally, and TRACE partly undoes that.&lt;/p&gt;
+&lt;h4 id=&#34;safety-trace-moves-where-safe-vs-unsafe-is-encoded&#34;&gt;Safety: TRACE moves where safe vs unsafe is encoded&lt;/h4&gt;
+&lt;p&gt;I ran the same analysis on Qwen with a different grouping: safe prompt + safe response vs harmful prompt + harmful response.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;fisher_curve_safety_qwen.png&#34; alt=&#34;Fisher ratio by layer, safe vs unsafe, Qwen2.5-7B&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In the base and initial DPO models, safe vs unsafe is separated best at layer 1, the embedding layer. That&amp;rsquo;s mostly a word-level signal.&lt;/p&gt;
+&lt;p&gt;After TRACE and gold DPO, the peak moves to layer 20, deep in the network. TRACE has the highest peak (0.069, 1.32× over base), above gold DPO (0.061). Initial DPO adds nothing here.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;late_pca_safety_qwen.png&#34; alt=&#34;3D PCA of late-layer activations coloured by response safety&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In the late layers (24–27), the safe (green) and unsafe (orange) responses split into two sides after alignment, most clearly for TRACE and gold DPO. Unlike the policy bins, these groups have positive silhouette scores, so the separation holds for individual samples too.&lt;/p&gt;
+&lt;h4 id=&#34;caveats&#34;&gt;Caveats&lt;/h4&gt;
+&lt;p&gt;The policy-bin separation is centroid-level only. Silhouette scores stay negative at every layer, so individual samples still overlap. TRACE moves whole clusters apart without tightening them.&lt;/p&gt;
+&lt;p&gt;The safe and unsafe sets also differ in topic: the safe set is benign coding and math, the unsafe set is harmful requests. Some of that signal may be topic rather than safety. Next I want to run linear probes per layer and use a topic-matched dataset.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;TRACE paper: &lt;a href=&#34;https://arxiv.org/abs/2511.02623&#34;&gt;arXiv:2511.02623&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Project page &amp;amp; code: &lt;a href=&#34;https://respailab.github.io/TRACE&#34;&gt;respailab.github.io/TRACE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+      
+    </item>
     
     <item>
       <title>Faster-Vit Architecture</title>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head><script src="/website/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=website/livereload" data-no-instant defer></script>
+		<meta charset="utf-8">
+		<title>Alignment Faking Depends on the Value, Not Just the Model · Manodeep Ray</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="canonical" href="http://localhost:1313/website/publications/alignment-faking-value/">
+
+		<meta name="author" content="Manodeep Ray">
+
+		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/normalize.css/normalize.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/firacode/distr/fira_code.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/css/nanum-gothic-coding.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/css/style.css">
+		<script defer data-domain="manodeepray.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
+	</head>
+	<body>
+
+
+<header>
+<h1>光</h1>
+</header>
+
+<div id="main">
+	<nav><a href="https://manodeepray.is-a.dev/">Home</a> &middot;
+	<a href="http://localhost:1313/website/blog">Blog</a> &middot;
+	<a href="http://localhost:1313/website/projects">Projects</a> &middot;
+	<a href="http://localhost:1313/website/publications">Publications</a> &middot;
+	<a rel="me" href="http://localhost:1313/website/about">About</a> &middot;
+	<a rel="me" href="https://github.com/Manodeepray">GitHub</a> &middot;
+	<a rel="me" href="https://www.linkedin.com/in/manodeep-ray-346b3b294/">LinkedIn</a>
+</nav>
+
+
+	<main>
+
+
+<article >
+	<header>
+		<h1>Alignment Faking Depends on the Value, Not Just the Model</h1>
+		
+			<time datetime='2026-08-18T12:00:00&#43;05:30'>2026-08-18</time>
+		
+	</header>
+
+	<h3 id="alignment-faking-depends-on-the-value-not-just-the-model">Alignment Faking Depends on the Value, Not Just the Model</h3>
+<p><em>Manodeep Ray, Vivek Srivastava, Shirish Karande, Murari Mandal (TCS Research, KIIT Bhubaneswar)</em></p>
+<h4 id="the-question">The question</h4>
+<p>Language models sometimes follow a directive when they think they&rsquo;re being watched, then drop it when they think they&rsquo;re not. This is <strong>alignment faking</strong>. Earlier work studied it for harmful content and a few moral values. We asked: does it depend on <em>which value</em> is being tested?</p>
+<h4 id="what-we-did">What we did</h4>
+<p>We built <strong>VALET</strong>, a framework that measures alignment faking per value. Each model–value pair gets three scores: <strong>bare</strong> (no system prompt), <strong>unmonitored</strong> and <strong>monitored</strong>. We ran it on 32 ValueBench values across ten open- and closed-weight models, from 8B up to about 675B parameters.</p>
+<p>The bare score matters. A value the model firmly holds and a value it never held both give a gap near zero, and only the bare rate tells them apart.</p>
+<h4 id="what-we-found">What we found</h4>
+<ul>
+<li>The compliance gap (monitored − unmonitored) ranges from 0.05 to 0.50 across models.</li>
+<li>Size doesn&rsquo;t predict it: a distilled 70B model fakes more than a ~675B one.</li>
+<li>A quarter of the structured variance comes from the specific model × value combination, not the model or the value alone.</li>
+<li>Under monitoring, models mostly reason about training. When unmonitored, they mostly reason about value conflict.</li>
+</ul>
+<p>We package each model&rsquo;s results as a <strong>value card</strong>: a model card extended with how the model behaves on each value.</p>
+<hr>
+<ul>
+<li>Paper: <a href="https://arxiv.org/abs/2611.03650">arXiv:2611.03650</a></li>
+<li>Code &amp; data: <a href="https://github.com/respailab/VALET">github.com/respailab/VALET</a></li>
+</ul>
+
+
+	
+</article>
+
+	</main>
+
+	<footer>
+		© 2026 Manodeep Ray
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/us/80x15.png"></a>
+	</footer>
+</div>
+
+	</body>
+</html>
+
+

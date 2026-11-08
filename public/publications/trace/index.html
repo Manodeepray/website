@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head><script src="/website/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=website/livereload" data-no-instant defer></script>
+		<meta charset="utf-8">
+		<title>TRACE: The Realignment Problem · Manodeep Ray</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="canonical" href="http://localhost:1313/website/publications/trace/">
+
+		<meta name="author" content="Manodeep Ray">
+
+		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/normalize.css/normalize.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/node_modules/firacode/distr/fira_code.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/css/nanum-gothic-coding.css">
+		<link rel="stylesheet" href="http://localhost:1313/website/css/style.css">
+		<script defer data-domain="manodeepray.is-a.dev" src="https://analytics.is-a.dev/js/script.js"></script>
+	</head>
+	<body>
+
+
+<header>
+<h1>光</h1>
+</header>
+
+<div id="main">
+	<nav><a href="https://manodeepray.is-a.dev/">Home</a> &middot;
+	<a href="http://localhost:1313/website/blog">Blog</a> &middot;
+	<a href="http://localhost:1313/website/projects">Projects</a> &middot;
+	<a href="http://localhost:1313/website/publications">Publications</a> &middot;
+	<a rel="me" href="http://localhost:1313/website/about">About</a> &middot;
+	<a rel="me" href="https://github.com/Manodeepray">GitHub</a> &middot;
+	<a rel="me" href="https://www.linkedin.com/in/manodeep-ray-346b3b294/">LinkedIn</a>
+</nav>
+
+
+	<main>
+
+
+<article >
+	<header>
+		<h1>TRACE: The Realignment Problem</h1>
+		
+			<time datetime='2026-10-21T12:00:00&#43;05:30'>2026-10-21</time>
+		
+	</header>
+
+	<h3 id="trace-the-realignment-problem--when-right-becomes-wrong-in-llms">TRACE: The Realignment Problem — When Right Becomes Wrong in LLMs</h3>
+<p>Alignment isn&rsquo;t a one-time thing. The rules a model gets aligned to (safety policies, content guidelines, what counts as &ldquo;acceptable&rdquo;) keep changing, but the model stays frozen at whatever it was trained on. We call this drift the <strong>Alignment-Reality Gap</strong>: a model that was &ldquo;right&rdquo; under the old policy becomes &ldquo;wrong&rdquo; under the new one. The obvious fix is to re-annotate the preference data under the revised rules and retrain, but that is expensive, slow and inconsistent. So the question we asked was: can you realign a model to a new policy by reusing the preference data you already have?</p>
+<p>That&rsquo;s what <strong>TRACE</strong> (<em>Triage and Re-align by Alignment Conflict Evaluation</em>) does. It first triages the existing preference pairs against the new policy, using a stronger model as a proxy judge. Each pair is sorted into one of three buckets: <strong>inversion</strong> (the old preferred answer is now the wrong one), <strong>suppression</strong> (both answers are now unacceptable), or <strong>retention</strong> (still fine as is). A bi-level optimization then scores how much each sample matters, and the model is updated with a hybrid objective: IPO for inversions and NPO for suppressions, while the retained data keeps general capabilities intact. We tested it on Qwen2.5-7B, Gemma-2-9B and Llama-3.1-8B, on synthetic policy-shift benchmarks and on PKU-SafeRLHF. In both settings it realigned the models to the new policy without hurting their general utility.</p>
+<p>I&rsquo;m a co-author on this one. My main work was the <strong>experiments</strong> and the <strong>rebuttal</strong>. On the experiments side, that meant running and debugging the training and evaluation pipelines across the different model families and benchmarks, and making sure the comparisons were fair and the numbers held up. The rebuttal was its own experience. Reviewers asked hard questions, and answering them usually meant running new experiments and ablations on a tight deadline, then explaining the results clearly. I learned a lot about how a paper gets defended, not just how it gets written.</p>
+<p>I also ran a small interpretability follow-up on my own, looking at whether the triage bins separate in the model&rsquo;s activations: <a href="/website/blog/trace-interp/">read it on the blog</a>.</p>
+<hr>
+<ul>
+<li>Paper: <a href="https://arxiv.org/abs/2511.02623">arXiv:2511.02623</a></li>
+<li>Project page &amp; code: <a href="https://respailab.github.io/TRACE">respailab.github.io/TRACE</a></li>
+</ul>
+
+
+	
+</article>
+
+	</main>
+
+	<footer>
+		© 2026 Manodeep Ray
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/us/80x15.png"></a>
+	</footer>
+</div>
+
+	</body>
+</html>
+
+
